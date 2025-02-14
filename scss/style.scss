@@ -1,3 +1,100 @@
 @import "reset";
 @import "vars";
 @import "fonts";
+
+body {
+  font-family: $font-family;
+  background-color: $bg-grey;
+  height: auto;
+}
+
+.extra-body {
+  background-color: $bg-white;
+}
+
+// Страница авторизации
+.authorization__wrapper {
+  position: absolute;
+  height: 396px;
+  inset-inline: 0;
+  inset-block-start: calc(50% - 198px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authorization__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 70px;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.login-img {
+  max-width: 296px;
+  height: auto;
+}
+
+.authorization-btn {
+  align-self: stretch;
+  border-radius: 10px;
+  padding: 37.5px 57px;
+  color: $bg-white;
+  background-color: $accent-light;
+  border: none;
+  font-family: $font-family;
+  font-size: 32px;
+  font-weight: 900;
+  transition: 0.2s;
+}
+
+.authorization-btn:hover {
+  color: $accent-light;
+  //   border: 2px solid $accent-light;
+  background-color: $bg-white;
+  outline-width: 2px;
+  outline-color: $accent-light;
+  outline-style: solid;
+}
+
+// Медиазапросы: от большего к меньшему, базовый вариант 1400-1920px, далее в соответствии с сеткой bootstrap //
+@media screen and (max-width: 1440px) {
+}
+
+// xxl
+@media (max-width: 1399px) {
+}
+
+// xl
+@media (max-width: 1199px) {
+}
+
+// lg
+@media screen and (max-width: 991px) {
+}
+
+// md
+@media (max-width: 767px) {
+}
+// sm
+@media (max-width: 575px) {
+  .authorization__body {
+    gap: 50px;
+  }
+  .authorization-btn {
+    font-size: 20px;
+    padding: 20px 49px;
+  }
+  .login-img {
+    max-width: 228px;
+    height: auto;
+  }
+}
+@media (max-width: 360px) {
+  .authorization__wrapper {
+    height: 282px;
+    inset-block-start: calc(50% - 141px);
+  }
+}
