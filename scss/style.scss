@@ -168,3 +168,9 @@ body {
     height: auto;
   }
 }
+@media (max-width: 360px) {
+  .authorization__wrapper {
+    height: 282px;
+    inset-block-start: calc(50% - 141px);
+  }
+}
