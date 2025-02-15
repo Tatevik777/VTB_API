@@ -13,6 +13,7 @@ body {
 }
 
 // Страница авторизации
+// Страница авторизации
 .authorization__wrapper {
   position: absolute;
   height: 396px;
@@ -44,6 +45,8 @@ body {
   color: $bg-white;
   background-color: $accent-light;
   border: none;
+  font-family: $font-family;
+  font-size: 32px;
   font-weight: 900;
   transition: 0.2s;
 }
@@ -155,4 +158,21 @@ body {
 }
 // sm
 @media (max-width: 575px) {
+  .authorization__body {
+    gap: 50px;
+  }
+  .authorization-btn {
+    font-size: 20px;
+    padding: 20px 49px;
+  }
+  .login-img {
+    max-width: 228px;
+    height: auto;
+  }
+}
+@media (max-width: 360px) {
+  .authorization__wrapper {
+    height: 282px;
+    inset-block-start: calc(50% - 141px);
+  }
 }
