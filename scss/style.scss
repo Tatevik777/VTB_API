@@ -12,6 +12,7 @@ body {
   background-color: $bg-white;
 }
 
+// Страница авторизации
 .authorization__wrapper {
   position: absolute;
   height: 396px;
@@ -56,6 +57,7 @@ body {
   outline-style: solid;
 }
 
+// Страница созданных целей
 .target__wrapper {
   display: grid;
   grid-template-columns: 120px 1fr;
