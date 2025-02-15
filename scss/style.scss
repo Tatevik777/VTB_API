@@ -5,15 +5,112 @@
 body {
   font-family: $font-family;
   background-color: $bg-grey;
-  height: auto;
 }
 
+// Стандартная иконка
+.icon {
+  stroke: #292929;
+  width: 50px;
+  height: 50px;
+}
+// Иконка добавления цели
+.add-icon {
+  stroke: #0a2973;
+  width: 50px;
+  height: 50px;
+}
+// Обертка для всех иконок
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+// Стили для иконки добавления цели
+.add-icon-wrapper {
+  width: 85px;
+  height: 85px;
+  border: 3px solid $accent-dark;
+}
+// Стили для стандартных иконок
+.common-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease-in-out;
+}
+// Стили для тултипа с носиком
+.tooltip {
+  position: absolute;
+  left: 100%;
+  margin-left: 10px;
+  padding: 14px 27px;
+  background-color: $accent-dark;
+  color: white;
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 2px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent $accent-dark transparent transparent;
+}
+
+// Всплывание тултипа при наведении на обертку иконок
+.icon-wrapper:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Стили для иконок при наведении
+.settings-icon path {
+  fill: #292929;
+}
+
+.help-icon circle {
+  fill: #292929;
+}
+
+.common-icon-wrapper:hover {
+  background-color: $accent-light;
+}
+
+.icon-wrapper:hover .icon {
+  stroke: white;
+}
+
+.icon-wrapper:hover .settings-icon path {
+  fill: white;
+}
+
+.icon-wrapper:hover .help-icon circle {
+  fill: white;
+}
+
+// Страница авторизации
 .extra-body {
   background-color: $bg-white;
 }
 
-// Страница авторизации
-// Страница авторизации
 .authorization__wrapper {
   position: absolute;
   height: 396px;
@@ -62,17 +159,20 @@ body {
 
 // Страница созданных целей
 .target__wrapper {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 25px;
+  display: flex;
   padding: 30px;
 }
 
 .navbar {
-  max-width: 120px;
+  width: 120px;
+  height: 100vh;
   padding: 30px 20px;
   border-radius: 10px;
   background-color: $bg-white;
+  flex: none;
+  position: fixed;
+  left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -80,7 +180,8 @@ body {
   &__top {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    align-items: center;
+    gap: clamp(15px, 1vw, 40px);
   }
 }
 
@@ -96,6 +197,8 @@ body {
 }
 
 .target__items {
+  flex: 1;
+  margin-left: 150px;
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -143,6 +246,28 @@ body {
 
 // xxl
 @media (max-width: 1399px) {
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+  // Иконка добавления цели
+  .add-icon {
+    stroke: #0a2973;
+    width: 30px;
+    height: 30px;
+  }
+
+  // Стили для иконки добавления цели
+  .add-icon-wrapper {
+    width: 65px;
+    height: 65px;
+    border: 3px solid $accent-dark;
+  }
+  // Стили для стандартных иконок
+  .common-icon-wrapper {
+    width: 76px;
+    height: 76px;
+  }
 }
 
 // xl
