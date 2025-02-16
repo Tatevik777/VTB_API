@@ -2,6 +2,11 @@
 @import "vars";
 @import "fonts";
 
+html,
+body {
+  overflow: hidden;
+}
+
 body {
   font-family: $font-family;
   background-color: $bg-grey;
@@ -92,6 +97,7 @@ body {
 
 .common-icon-wrapper:hover {
   background-color: $accent-light;
+  transform: scale(1.1);
 }
 
 .icon-wrapper:hover .icon {
@@ -159,20 +165,30 @@ body {
 
 // Страница созданных целей
 .target__wrapper {
+  // display: flex;
+  // padding: 30px;
+  // height: 100vh;
   display: flex;
-  padding: 30px;
+  height: 100vh;
+  padding: 30px 20px;
+  gap: 20px;
+  overflow: hidden;
 }
 
 .navbar {
   width: 120px;
-  height: 100vh;
+  height: calc(100vh - 60px);
   padding: 30px 20px;
   border-radius: 10px;
   background-color: $bg-white;
   flex: none;
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 20px;
+  top: 30px;
+
+  z-index: 10;
+
+  bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -196,25 +212,59 @@ body {
   height: auto;
 }
 
+.target__items::-webkit-scrollbar {
+  display: none;
+}
+
 .target__items {
   flex: 1;
-  margin-left: 150px;
+  height: calc(100vh - 60px);
+  width: calc(100vw - 200px);
+  // margin-left: 130px;
   display: grid;
   gap: 30px;
+
+  position: fixed;
+  left: 160px;
+  top: 30px;
+  bottom: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  // grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   &-item {
     padding: 30px;
     display: flex;
     flex-direction: column;
+    max-width: 520px;
+    max-height: 500px;
+
+    word-wrap: break-word;
+
     background-color: rgba(255, 255, 255, 1);
     border-radius: 10px;
     &__top {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
       margin-bottom: 35px;
       &-title {
         color: $accent-light;
+      }
+      &-link__wrapper {
+        position: relative;
+        width: 41px;
+        height: 41px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        background-color: $bg-grey;
       }
     }
     &__body {
@@ -231,9 +281,32 @@ body {
 
 .progress-text {
   margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.progress-label {
+  color: $accent-dark;
+}
+
+.progress-preposition {
+  color: $accent-light;
+}
+
+.progress-value,
+.progress-total {
+  color: $accent-light;
+}
+
+.progress-bar__wrapper {
+  width: 100%;
+  background-color: $bg-grey;
+  border-radius: 20px;
 }
 
 .progress-bar {
+  height: 20px;
   background-color: $bright-green;
   color: $bg-white;
   border-radius: 20px;
@@ -247,26 +320,23 @@ body {
 // xxl
 @media (max-width: 1399px) {
   .icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
   // Иконка добавления цели
   .add-icon {
-    stroke: #0a2973;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
-
   // Стили для иконки добавления цели
   .add-icon-wrapper {
-    width: 65px;
-    height: 65px;
-    border: 3px solid $accent-dark;
+    width: 60px;
+    height: 60px;
   }
   // Стили для стандартных иконок
   .common-icon-wrapper {
-    width: 76px;
-    height: 76px;
+    width: 60px;
+    height: 60px;
   }
 }
 
