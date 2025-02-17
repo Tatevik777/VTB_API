@@ -252,10 +252,20 @@ body {
   height: auto;
 }
 
-.target-img,
-.missionComplete {
-  width: 100%;
+.target__items-item__body-progressinfo img.missionComplete {
+  max-width: 100%;
   height: auto;
+  display: block;
+}
+
+.target__items-item__body-image {
+  flex: 0 0 60%;
+}
+
+.target__items-item__body-image img.target-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .target__items::-webkit-scrollbar {
@@ -311,6 +321,7 @@ body {
 .target__items-item__body {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   margin-bottom: 21px;
 }

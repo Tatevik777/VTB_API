@@ -25,10 +25,19 @@ function saveGoal() {
     const endDate = document.getElementById("endDate").value;
     const targetImage = document.getElementById("targetImage").files[0];
 
+    
     // Проверка обязательных полей
     if (!targetName || !targetAmount) {
         alert("Введите название и сумму цели!");
         return;
+    }
+
+    if (targetImage) {
+        const reader = new FileReader();
+        reader.readAsDataURL(targetImage);
+        reader.onload = function () {
+
+        }
     }
 
     // Проверяем, что сумма цели — это положительное число
@@ -71,7 +80,7 @@ function saveGoal() {
     }
 
     // Читаем существующие цели из localStorage, если их там нет, то создаём пустой массив
-    let targets = JSON.parse(localStorage.getItem("targets")) || [];
+    // let targets = JSON.parse(localStorage.getItem("targets")) || [];
 
     // Создаём новую цель
     const newTarget = {
@@ -81,13 +90,24 @@ function saveGoal() {
         progress: initialDeposit,
         startDate,
         endDate,
-        image: targetImage ? URL.createObjectURL(targetImage) : './assets/images/default-image.png',
+        image: './assets/images/img/default-image.png'
     };
 
-    // Добавляем цель в массив и сохраняем
-    targets.push(newTarget);
-    localStorage.setItem("targets", JSON.stringify(targets));
+    if (targetImage) {
+        const reader = new FileReader();
+        reader.readAsDataURL(targetImage);
+        reader.onload = function () {
+            newTarget.image = reader.result;
+            savetoLocalStorage(newTarget);
+        }
+    }
+}
 
-    // Переход на страницу с целями
+    // Добавляем цель в массив и сохраняем
+function savetoLocalStorage(target) {
+    let targets = JSON.parse(localStorage.getItem("targets")) || [];
+    targets.push(target);
+    localStorage.setItem("targets", JSON.stringify(targets)); 
     window.location.href = "./targets.html";
 }
+    

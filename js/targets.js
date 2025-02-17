@@ -36,10 +36,20 @@ function addTargetToDOM(target) {
 
     // Вычисляем количество оставшихся дней
     const daysLeft = target.endDate ? Math.ceil((new Date(target.endDate) - new Date()) / (1000 * 60 * 60 * 24)) : "—";
+    // Вычисляем оставшуюся сумму
+    const remainingAmount = Math.max(target.amount - target.progress, 0);
 
     const progressHTML = progressPercent === 100 
     ? `<img class="missionComplete" src="./assets/images/img/mission-complete.png" alt="Цель выполнена">` 
-    : `<span>Осталось дней: ${daysLeft}</span>`
+    : `<div class="progress-info__time">
+            <span class="progress-info__label">Конец сбора через:</span>
+            <span class="progress-info__days">${daysLeft} дней</span>
+        </div>
+        <div class="progress-info__amount">
+            <span class="progress-info__label">Осталось собрать:</span>
+            <span class="progress-info__remaining">${remainingAmount} ₽</span>
+        </div>`
+    
 
     targetElement.innerHTML = `
         <div class="target__items-item__top">
@@ -63,7 +73,16 @@ function addTargetToDOM(target) {
             </div>
         </div>
         <div class="target__items-item__body">
+            <div class="target__items-item__body-image">
+                <img
+                    src="${target.image}"
+                    alt="Изображение цели"
+                    class="target-img"
+                />
+            </div>
+            <div class="target__items-item__body-progressinfo">
             ${progressHTML}
+            </div>
         </div>
         <div class="target__items-item__bottom">
             <div class="progress-text">
