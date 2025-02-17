@@ -218,6 +218,9 @@ body {
 
 .target__items-item__body-progressinfo {
   flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .target__items-item__body-image img.target-img {
@@ -255,16 +258,14 @@ body {
   scrollbar-width: none;
 
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-auto-rows: 1fr;
 
-  // grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   &-item {
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 520px;
-    max-height: 500px;
-
+    height: 100%;
     word-wrap: break-word;
 
     background-color: rgba(255, 255, 255, 1);
@@ -292,6 +293,7 @@ body {
     }
     &__body {
       display: flex;
+      flex-grow: 1;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
@@ -334,7 +336,10 @@ body {
   background-color: $bright-green;
   color: $bg-white;
   border-radius: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
 }
 
 // Медиазапросы: от большего к меньшему, базовый вариант 1400-1920px, далее в соответствии с сеткой bootstrap //

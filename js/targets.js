@@ -30,9 +30,10 @@ function addTargetToDOM(target) {
 
     // Вычисляем процент прогресса
     const progressPercent = Math.min((target.progress / target.amount) * 100, 100);
-    let progressColor = "red";
-    if (progressPercent >= 50) progressColor = "yellow";
-    if (progressPercent === 100) progressColor = "green";
+    const progressPercentRound = Math.round(progressPercent);
+    let progressColor = "rgba(223, 34, 22, 1)";
+    if (progressPercent >= 20) progressColor = "rgba(182, 204, 45, 1)";
+    if (progressPercent >= 80) progressColor = "rgba(80, 219, 58, 1)";
 
     // Вычисляем количество оставшихся дней
     const daysLeft = target.endDate ? Math.ceil((new Date(target.endDate) - new Date()) / (1000 * 60 * 60 * 24)) : "—";
@@ -92,7 +93,7 @@ function addTargetToDOM(target) {
                 <span class="progress-total">${target.amount}</span>
             </div>
         <div class="progress-bar__wrapper">
-            <div class="progress-bar" style="width: ${progressPercent}%; background-color: ${progressColor};"></div>
+            <div class="progress-bar" style="width: ${progressPercent}%; background-color: ${progressColor};"><p>${progressPercentRound}%</p></div>
         </div>
         
     </div>
