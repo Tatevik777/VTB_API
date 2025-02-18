@@ -77,86 +77,21 @@ function saveGoal() {
                 // Преобразуем в сжатый base64 (JPEG, 80% качества)
                 newTarget.image = canvas.toDataURL("image/jpeg", 0.8);
 
-                let targets = JSON.parse(localStorage.getItem("targets")) || [];
-                targets.push(newTarget);
-                localStorage.setItem("targets", JSON.stringify(targets));
-
-                alert("Цель сохранена!");
-                window.location.href = "./targets.html";
+                saveToLocalStorage(newTarget)
             };
         };
 
         reader.readAsDataURL(file);
     } 
     else {
-        let targets = JSON.parse(localStorage.getItem("targets")) || [];
-        targets.push(newTarget);
-        localStorage.setItem("targets", JSON.stringify(targets));
-
-        alert("Цель сохранена!");
-        window.location.href = "./targets.html";
+        saveToLocalStorage(newTarget)
     }
 }
 
-// function saveGoal() {
-//     // Получаем данные из формы
-//     const targetName = document.getElementById("targetName").value.trim();
-//     const targetAmount = document.getElementById("targetAmount").value.trim();
-//     let initialDeposit = document.getElementById("initialDeposit").value.trim();
-//     const startDate = document.getElementById("startDate").value;
-//     const endDate = document.getElementById("endDate").value;
-//     const targetImageFile = document.getElementById("targetImage").files[0]; // Загруженное изображение
-
-    
-//     // Проверка обязательных полей
-//     if (!targetName || !targetAmount) {
-//         alert("Введите название и сумму цели!");
-//         return;
-//     }
-
-//     if (isNaN(targetAmount) || targetAmount <= 0) {
-//         alert("Сумма цели должна быть положительным числом!");
-//         return;
-//     }
-
-//     if (initialDeposit === "") {
-//         initialDeposit = 0;
-//     } else if (isNaN(initialDeposit) || initialDeposit < 0) {
-//         alert("Сумма первого взноса должна быть числом и не меньше 0!");
-//         return;
-//     }
-
-//     initialDeposit = Number(initialDeposit);
-//     const targetAmountNum = Number(targetAmount);
-
-//     if (initialDeposit > targetAmountNum) {
-//         alert("Первый взнос не может превышать сумму цели!");
-//         return;
-//     }
-
-//     // Выбираем изображение: либо файл, либо default
-//     let imageUrl = "./assets/images/img/default-image.png"; // Картинка по умолчанию
-
-//     if (targetImageFile) {
-//         imageUrl = URL.createObjectURL(targetImageFile); // Создаём временный URL
-//     }
-
-//     // Создаём объект цели
-//     const target = {
-//         id: Date.now(),
-//         name: targetName,
-//         amount: targetAmountNum,
-//         progress: initialDeposit,
-//         startDate,
-//         endDate,
-//         image: imageUrl, // Сохраняем URL картинки
-//     };
-
-//     // Читаем существующие цели, добавляем новую
-//     let targets = JSON.parse(localStorage.getItem("targets")) || [];
-//     targets.push(target);
-//     localStorage.setItem("targets", JSON.stringify(targets));
-
-//     alert("Цель сохранена!");
-//     window.location.href = "./targets.html";
-// }
+function saveToLocalStorage(target) {
+    let targets = JSON.parse(localStorage.getItem("targets")) || [];
+    targets.push(target);
+    localStorage.setItem("targets", JSON.stringify(targets));
+    alert("Цель сохранена!");
+    window.location.href = "./targets.html";
+}
