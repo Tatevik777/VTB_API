@@ -87,7 +87,8 @@ function saveGoal() {
         };
 
         reader.readAsDataURL(file);
-    } else {
+    } 
+    else {
         let targets = JSON.parse(localStorage.getItem("targets")) || [];
         targets.push(newTarget);
         localStorage.setItem("targets", JSON.stringify(targets));

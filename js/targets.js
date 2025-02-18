@@ -101,5 +101,14 @@ function addTargetToDOM(target) {
 
     targetsContainer.appendChild(targetElement);
 
+    // Получаем элемент иконки редактирования цели внутри карточки цели
+    const editIconWrapper = targetElement.querySelector('.target__items-item__top-link__wrapper');
+    editIconWrapper.addEventListener('click', function () {
+        const targetId = targetElement.getAttribute('data-id');
+        localStorage.setItem('editingTargetId', String(targetId));
+        window.location.href = './targetchange.html'
+    })
+    
+
 };
 
