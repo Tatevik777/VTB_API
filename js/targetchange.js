@@ -14,4 +14,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('targetImage').src = target.image;
     document.getElementById('targetSum').textContent = target.amount;
 
+
 });

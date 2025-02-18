@@ -197,8 +197,8 @@
             <div class="editing-target__main">
               <div class="editing-target__main-left">
                 <h1 id="targetTitle"></h1>
+                <p class="target-info-title">Прогресс цели</p>
                 <div class="progress-bar__wrapper">
-                  <p>Прогресс цели</p>
                   <div class="progress-bar"></div>
                 </div>
                 <div class="target-info">
@@ -208,24 +208,48 @@
                     >
                     <span id="targetSum"></span>
                   </div>
+                  <div class="target-info__target-priority-level">
+                    <span class="target-info__label">Приоритет цели</span>
+                    <span id="priorityLevel"></span>
+                  </div>
+                  <div class="target-info__target-priority-time">
+                    <span class="target-info__label"
+                      >Приоритет цели по времени</span
+                    >
+                    <span id="priorityLevel"></span>
+                  </div>
                   <div class="target-info__target-start-date">
                     <span class="target-info__label"
                       >Дата начала накопления</span
                     >
-                    <span></span>
+                    <span id="startDate"></span>
                   </div>
                   <div class="target-info__target-end-date">
                     <span class="target-info__label"
                       >Дата окончания накопления</span
                     >
-                    <span></span>
+                    <span id="endDate"></span>
                   </div>
+                </div>
+                <div class="add-amount__wrapper">
+                  <label for="addAmount" class="target-info-title">
+                    Сумма, которую хотите внести сейчас
+                  </label>
+                  <input id="addAmount" type="text" />
+                  <button type="button" id="addAmountBtn">Пополнить</button>
                 </div>
               </div>
               <div class="editing-target__main-right">
                 <img src="" alt="" id="targetImage" />
               </div>
             </div>
+          </div>
+          <div class="editing-target__wrapper-image">
+            <img
+              class="image-fluid"
+              src="./assets/images/img/background.png"
+              alt=""
+            />
           </div>
         </div>
       </div>
