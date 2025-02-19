@@ -406,7 +406,6 @@ button {
 
 .progress-bar {
   height: 20px;
-  background-color: rgb(80, 219, 58);
   color: rgb(255, 255, 255);
   border-radius: 20px;
   display: flex;
@@ -433,14 +432,19 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  flex: 1 0 40%;
 }
 
 .editing-target {
+  font-size: clamp(14px, 0.94vw, 18px);
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 20px 80px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
 .editing-target__buttons-bar {
   display: flex;
@@ -459,6 +463,43 @@ button {
   display: flex;
   gap: 45px;
 }
+.editing-target__main-left__target-info {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.editing-target__main-right {
+  flex: 0 1 auto;
+}
+
+.add-amount__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-btn {
+  font-weight: 500;
+  font-size: clamp(18px, 1.25vw, 24px);
+  padding-top: clamp(12px, 1.25vw, 24px);
+  padding-bottom: 24px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(10, 41, 115);
+  border-radius: 10px;
+  border: none;
+  transition: 0.2s;
+  align-self: stretch;
+}
+
+.add-btn:hover {
+  color: rgb(10, 41, 115);
+  background-color: rgb(255, 255, 255);
+  outline-width: 2px;
+  outline-color: rgb(10, 41, 115);
+  outline-style: solid;
+  border: none;
+}
 
 .editing-target__buttons-bar__buttons button {
   flex: 1;
@@ -466,6 +507,26 @@ button {
   height: clamp(50px, 3.2vw, 62px);
   font-size: clamp(16px, 1.04vw, 20px);
   font-weight: 500;
+}
+
+.target-title {
+  font-size: clamp(32px, 2.5vw, 48px);
+  font-weight: 500;
+  color: rgb(0, 159, 223);
+  margin-bottom: 20px;
+}
+
+.target-info-title {
+  font-size: clamp(16px, 1.04vw, 20px);
+  font-weight: 700;
+  color: rgb(10, 41, 115);
+  margin-bottom: 15px;
+}
+
+#addAmount {
+  background-color: rgb(235, 235, 235);
+  border: 3px;
+  padding: 17px 20px;
 }
 
 @media (max-width: 1399px) {
