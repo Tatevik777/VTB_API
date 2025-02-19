@@ -114,6 +114,251 @@ body {
   outline-style: solid;
 }
 
+body {
+  font-family: "Inter", sans-serif;
+  background-color: rgb(235, 235, 235);
+  padding: 30px 26px 30px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.settings__main-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(255, 255, 255);
+  width: 94%;
+  border-radius: 10px;
+  margin-left: 25px;
+  padding: 38px 80px;
+  justify-content: space-between;
+}
+
+.settings__inputs-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.settings__inputs-container__title {
+  display: inline;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: rgb(10, 41, 115);
+  line-height: 1.1;
+  margin: 12px 0px 30px 0px;
+}
+
+.settings__button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.settings__button-container__button-save {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(10, 41, 115);
+  padding: 24px 171px;
+  border-radius: 10px;
+  border: none;
+  box-sizing: border-box;
+}
+
+.settings__button-container__button-save:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(10, 41, 115);
+  font-weight: 700;
+  border: 4px solid rgb(10, 41, 115);
+}
+
+.settings__inputs-container__checkbox-select-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.settings__inputs-container__checkbox-select-container__custom-checkbox__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.settings__inputs-container__checkbox-select-container__custom-checkbox__input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.settings__inputs-container__checkbox-select-container__custom-checkbox__toggle {
+  position: relative;
+  display: inline-block;
+  margin: 0 15px 0 0;
+  width: 70px;
+  height: 37px;
+  background: rgb(237, 237, 237);
+  border-radius: 50px;
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.settings__inputs-container__checkbox-select-container__custom-checkbox__toggle::after {
+  content: "";
+  position: absolute;
+  top: 4.5px;
+  left: 4.5px;
+  width: 28px;
+  height: 28px;
+  background: rgb(255, 255, 255);
+  border-radius: 50px;
+  transition: left 0.2s ease-in-out, width 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.settings__inputs-container__checkbox-select-container__custom-checkbox__input:checked + .settings__inputs-container__checkbox-select-container__custom-checkbox__toggle {
+  background: rgb(0, 159, 223);
+}
+
+.settings__inputs-container__checkbox-select-container__custom-checkbox__input:checked + .settings__inputs-container__checkbox-select-container__custom-checkbox__toggle::after {
+  left: calc(100% - 4.5px);
+  transform: translateX(-100%);
+}
+
+.settings__inputs-container__checkbox-select-container__notification-icon {
+  position: relative;
+  display: flex;
+  margin: 0 13px 0 15px;
+  width: 31px;
+  height: 31px;
+  background: rgb(237, 237, 237);
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings__inputs-container__checkbox-select-container__tooltip {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  font-family: "Inter", sans-serif;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(10, 41, 115);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px;
+  margin-bottom: 150px;
+  margin-left: 294px;
+  display: none;
+}
+
+.settings__inputs-container__checkbox-select-container__notification-icon:hover + .settings__inputs-container__checkbox-select-container__tooltip,
+.settings__inputs-container__checkbox-select-container__notification-icon:focus + .settings__inputs-container__checkbox-select-container__tooltip {
+  display: block;
+}
+
+.settings__inputs-container__checkbox-select-container__select {
+  width: 470px;
+  background: rgb(237, 237, 237);
+  padding: 16.5px 20px;
+  box-sizing: border-box;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.settings__inputs-container__radiobuttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority,
+.settings__inputs-container__radiobuttons-container__radiobutton-time {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority {
+  margin-right: 58px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority legend,
+.settings__inputs-container__radiobuttons-container__radiobutton-time legend {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+  padding-bottom: 30px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority label,
+.settings__inputs-container__radiobuttons-container__radiobutton-time label {
+  font-size: 24px;
+  line-height: 1.3;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  margin-bottom: 15px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority input,
+.settings__inputs-container__radiobuttons-container__radiobutton-time input {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority span,
+.settings__inputs-container__radiobuttons-container__radiobutton-time span {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  width: 37px;
+  height: 37px;
+  background: rgb(237, 237, 237);
+  border-radius: 50px;
+  cursor: pointer;
+  vertical-align: middle;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority span::after,
+.settings__inputs-container__radiobuttons-container__radiobutton-time span::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 23px;
+  height: 23px;
+  background: rgb(255, 255, 255);
+  border-radius: 50px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority label input:checked ~ span,
+.settings__inputs-container__radiobuttons-container__radiobutton-time label input:checked ~ span {
+  background: rgb(0, 159, 223);
+}
+
 @media (max-width: 575px) {
   .authorization__body {
     gap: 50px;
