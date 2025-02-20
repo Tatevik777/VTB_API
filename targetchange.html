@@ -197,12 +197,21 @@
               </a>
               <div class="editing-target__buttons-bar__buttons">
                 <button class="btn edit-button">Редактировать</button>
-                <button class="btn reset-button">Отмена</button>
+                <button class="btn reset-button" style="display: none">
+                  Отмена
+                </button>
               </div>
             </div>
             <div class="editing-target__main">
               <div class="editing-target__main-left">
                 <h1 class="target-title" id="targetTitle"></h1>
+                <input
+                  type="text"
+                  id="targetTitleInput"
+                  value=""
+                  placeholder="Название цели"
+                  style="display: none"
+                />
                 <p class="target-info-title">Прогресс цели</p>
                 <div class="progress-bar__wrapper">
                   <!-- <div class="progress-bar"></div> -->
@@ -213,28 +222,62 @@
                       >Сумма, которую хотим накопить:</span
                     >
                     <span id="targetSum"></span>
+                    <input
+                      type="text"
+                      id="targetSumInput"
+                      value=""
+                      placeholder="Сумма цели"
+                      style="display: none"
+                    />
                   </div>
                   <div class="target-info__target-priority-level">
                     <span class="target-info__label">Приоритет цели:</span>
                     <span id="priorityLevel"></span>
+                    <select
+                      id="priorityLevelSelect"
+                      name="priorityLevelSelect"
+                      style="display: none"
+                    >
+                      <option value="high">Высокий</option>
+                      <option value="medium">Средний</option>
+                      <option value="low">Низкий</option>
+                    </select>
                   </div>
                   <div class="target-info__target-priority-time">
                     <span class="target-info__label"
                       >Приоритет цели по времени:</span
                     >
                     <span id="priorityTime"></span>
+                    <select
+                      id="priorityTimeSelect"
+                      name="priorityTimeSelect"
+                      style="display: none"
+                    >
+                      <option value="short-term">Краткосрочный</option>
+                      <option value="long-term">Долгосрочный</option>
+                    </select>
                   </div>
                   <div class="target-info__target-start-date">
                     <span class="target-info__label"
                       >Дата начала накопления:</span
                     >
                     <span id="startDate"></span>
+                    <input
+                      type="date"
+                      id="startDateInput"
+                      style="display: none"
+                    />
                   </div>
                   <div class="target-info__target-end-date">
                     <span class="target-info__label"
                       >Дата окончания накопления:</span
                     >
                     <span id="endDate"></span>
+                    <input
+                      type="date"
+                      id="endDateInput"
+                      style="display: none"
+                    />
                   </div>
                 </div>
                 <div class="add-amount__wrapper">

@@ -25,8 +25,8 @@ function saveGoal() {
     const targetImageInput = document.getElementById("targetImage");
     const priorityTimeSelect = document.getElementById('priorityTime');
     const priorityLevelSelect = document.getElementById('priorityLevel');
-    const priorityTime = priorityLevelSelect.options[priorityTimeSelect.selectedIndex].text;
-    priorityLevel = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
+    const priorityTime = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
+    const priorityLevel = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
 
     if (!targetName || !targetAmount) {
         alert("Введите название и сумму цели!");
