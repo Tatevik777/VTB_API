@@ -23,6 +23,10 @@ function saveGoal() {
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
     const targetImageInput = document.getElementById("targetImage");
+    const priorityTimeSelect = document.getElementById('priorityTime');
+    const priorityLevelSelect = document.getElementById('priorityLevel');
+    const priorityTime = priorityLevelSelect.options[priorityTimeSelect.selectedIndex].text;
+    priorityLevel = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
 
     if (!targetName || !targetAmount) {
         alert("Введите название и сумму цели!");
@@ -41,6 +45,8 @@ function saveGoal() {
         progress: initialDeposit,
         startDate,
         endDate,
+        priorityTime,
+        priorityLevel,
         image: "./assets/images/img/default-image.png",  
     };
 
