@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Создание цели</title>
+    <meta name="keywords" content="создание цели" />
+    <meta name="description" content="Создание цели." />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="creatingGoal__body">
+    <section class="creatingGoal__main-wrapper">
+      <div class="creatingGoal__inputs-container">
+        <div class="creatingGoal__inputs-container__buttons">
+          <button class="creatingGoal__inputs-container__buttons_goBackButton">
+            <img
+              class="creatingGoal__inputs-container__buttons_goBackButton__icon"
+              src="/assets/images/icons/creatinggoals-arrow-go-back.svg"
+              alt="Кнопка «Назад»"
+            />
+            Назад
+          </button>
+          <div class="creatingGoal__inputs-container__buttons__subcontainer__buttons">
+            <button type="submit" class="creatingGoal__inputs-container__buttons_saveButton" id="creatingGoalButton">
+              Сохранить
+            </button>
+            <button
+              type="reset"
+              class="creatingGoal__inputs-container__buttons_cancelButton"
+              id="cancelCreatingGoalButton"
+            >
+              Отмена
+            </button>
+          </div>
+        </div>
+        <div class="creatingGoal__inputs-container__inputs">
+          <div class="creatingGoal__inputs-container__inputs__subcontainer__textInputs">
+            <label class="creatingGoal__inputs-container__inputs__label" for="creatingGoalGoalName"
+              >Название цели</label
+            >
+            <input
+              class="creatingGoal__inputs-container__inputs__inputItem"
+              type="text"
+              id="creatingGoalGoalName"
+              name="creatingGoalGoalName"
+              placeholder="Введите название цели"
+              required
+            />
+
+            <label class="creatingGoal__inputs-container__inputs__label" for="creatingGoalGoalSum"
+              >Сумма, которую хотите накопить</label
+            >
+            <input
+              class="creatingGoal__inputs-container__inputs__inputItem"
+              type="number"
+              id="creatingGoalGoalSum"
+              name="creatingGoalGoalSum"
+              min="0"
+              placeholder="Введите сумму"
+              required
+            />
+
+            <label class="creatingGoal__inputs-container__inputs__label" for="creatingGoalGoalPriority"
+              >Приоритет цели</label
+            >
+            <select
+              class="creatingGoal__inputs-container__inputs__inputItem"
+              id="creatingGoalGoalPriority"
+              type="text"
+              name="creatingGoalGoalPriority"
+              required
+            >
+              <option hidden value="">Выберите приоритет</option>
+              <option>Высокий</option>
+              <option>Средний</option>
+              <option>Низкий</option>
+            </select>
+
+            <label class="creatingGoal__inputs-container__inputs__label" for="creatingGoalGoalTime"
+              >Приоритет цели по времени</label
+            >
+            <select
+              class="creatingGoal__inputs-container__inputs__inputItem"
+              id="creatingGoalGoalTime"
+              type="text"
+              name="creatingGoalGoalTime"
+              required
+            >
+              <option hidden value="">Приоритет по времени</option>
+              <option>Краткосрочная</option>
+              <option>Долгосрочная</option>
+            </select>
+
+            <label class="creatingGoal__inputs-container__inputs__label" for="creatingGoalGoalStartDate"
+              >Дата начала накопления</label
+            >
+            <input
+              class="creatingGoal__inputs-container__inputs__inputItem"
+              type="date"
+              id="creatingGoalGoalStartDate"
+              name="creatingGoalGoalStartDate"
+              placeholder="Выберите дату"
+              required
+            />
+
+            <label class="creatingGoal__inputs-container__inputs__label" for="creatingGoalGoalFinishDate"
+              >Дата окончания накопления</label
+            >
+            <input
+              class="creatingGoal__inputs-container__inputs__inputItem"
+              type="date"
+              id="creatingGoalGoalFinishDate"
+              name="creatingGoalGoalFinishDate"
+              placeholder="Выберите дату"
+              required
+            />
+          </div>
+
+          <div class="creatingGoal__inputs-container__inputs__subcontainer__textInputs">
+            <label
+              class="creatingGoal__inputs-container__inputs__inputImageDownload__container"
+              for="creatingGoalGoalImageDownload"
+            >
+              <input
+                type="file"
+                class="creatingGoal__inputs-container__inputs__inputImageDownload"
+                id="creatingGoalGoalImageDownload"
+                name="creatingGoalGoalImageDownload"
+                accept="image/*"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="creatingGoal__img-container">
+        <img
+          class="creatingGoal__img-container__img"
+          src="/assets/images/img/creating-goal_banner_pc.png"
+          alt="Достигайте целей с ВТБ!"
+        />
+      </div>
+    </section>
+    <script src="/js/creatinggoal.js"></script>
+    <script src="/js/settings.js"></script>
+  </body>
+</html>

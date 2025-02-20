@@ -164,7 +164,7 @@ body {
 }
 
 //Страница "Настройки"
-body {
+.settings__body {
   font-family: $font-family;
   background-color: $bg-grey;
   padding: 30px 26px 30px 20px;
@@ -329,7 +329,7 @@ body {
   padding: 16.5px 20px;
   box-sizing: border-box;
   border: none;
-  font-family: $font-family;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 18px;
 }
@@ -411,6 +411,197 @@ body {
   background: $accent-light;
 }
 //Конец страницы "Настройки"
+
+//Страница "Создание цели"
+.creatingGoal__body {
+  font-family: $font-family;
+  background-color: $bg-grey;
+  padding: 30px 25px 30px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.creatingGoal__main-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: $bg-white;
+  width: 94%;
+  border-radius: 10px;
+  margin-left: 25px;
+  padding: 38px 80px;
+  justify-content: space-between;
+}
+
+.creatingGoal__inputs-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 0px 80px 0px 0px;
+}
+
+.creatingGoal__inputs-container__inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.creatingGoal__inputs-container__inputs__subcontainer__textInputs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.creatingGoal__inputs-container__inputs__subcontainer__photoInput {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.creatingGoal__inputs-container__buttons,
+.creatingGoal__inputs-container__buttons__subcontainer__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px 0px 23px 0px;
+}
+
+.creatingGoal__inputs-container__buttons {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.creatingGoal__inputs-container__buttons__subcontainer__buttons {
+  margin: 0px;
+  justify-content: flex-end;
+}
+
+.creatingGoal__inputs-container__buttons_goBackButton {
+  display: flex;
+  flex-direction: row;
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  align-items: center;
+  margin-top: 18px;
+  padding: 0px;
+  background: transparent;
+  border: none;
+}
+
+.creatingGoal__inputs-container__buttons_goBackButton__icon {
+  margin-right: 10px;
+}
+
+.creatingGoal__inputs-container__buttons_saveButton,
+.creatingGoal__inputs-container__buttons_cancelButton {
+  font-family: $font-family;
+  font-weight: 600;
+  font-size: 20px;
+  color: $accent-light;
+  border: 2px solid $accent-light;
+  padding: 19px 49.5px;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.creatingGoal__inputs-container__buttons_cancelButton {
+  margin-left: 20px;
+  padding: 19px 65px;
+}
+
+.creatingGoal__inputs-container__inputs__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  font-size: 16px;
+  color: $accent-light;
+}
+
+.creatingGoal__inputs-container__inputs__inputItem {
+  width: 470px;
+  height: 57px;
+  background: $grey;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 17px 0px 17px 20px;
+}
+
+.creatingGoal__inputs-container__inputs__inputItem,
+.creatingGoal__inputs-container__inputs__inputItem::placeholder {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: $text;
+}
+
+.creatingGoal__inputs-container__inputs__inputItem:focus::placeholder {
+  opacity: 0;
+}
+
+.creatingGoal__inputs-container__inputs__inputItem::-webkit-outer-spin-button,
+.creatingGoal__inputs-container__inputs__inputItem::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.creatingGoal__img-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 39%;
+}
+
+.creatingGoal__img-container__img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.creatingGoal__inputs-container__inputs__inputImageDownload {
+  display: none;
+  z-index: 2;
+  width: 285px;
+  height: 323px;
+}
+
+.creatingGoal__inputs-container__inputs__inputImageDownload__container,
+.creatingGoal__inputs-container__inputs__imagePreview {
+  margin: 38px 0px 0px 45px;
+  width: 285px;
+  height: 323px;
+  border-radius: 5px;
+  border: 1px solid $grey;
+  background-image: url("/assets/images/icons/creatinggoals-plus-downloading-images.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.creatingGoal__inputs-container__inputs__imagePreview {
+  display: none;
+}
+
+//Конец страницы "Создание цели"
+
 // Страница созданных целей
 .target__wrapper {
   // display: flex;

@@ -215,7 +215,7 @@ body {
   outline-style: solid;
 }
 
-body {
+.settings__body {
   font-family: "Inter", sans-serif;
   background-color: rgb(235, 235, 235);
   padding: 30px 26px 30px 20px;
@@ -370,7 +370,298 @@ body {
   display: block;
 }
 
-<<<<<<< HEAD
+.settings__inputs-container__checkbox-select-container__select {
+  width: 470px;
+  background: rgb(237, 237, 237);
+  padding: 16.5px 20px;
+  box-sizing: border-box;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.settings__inputs-container__radiobuttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority,
+.settings__inputs-container__radiobuttons-container__radiobutton-time {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority {
+  margin-right: 58px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority legend,
+.settings__inputs-container__radiobuttons-container__radiobutton-time legend {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+  padding-bottom: 30px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority label,
+.settings__inputs-container__radiobuttons-container__radiobutton-time label {
+  font-size: 24px;
+  line-height: 1.3;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  margin-bottom: 15px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority input,
+.settings__inputs-container__radiobuttons-container__radiobutton-time input {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority span,
+.settings__inputs-container__radiobuttons-container__radiobutton-time span {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  width: 37px;
+  height: 37px;
+  background: rgb(237, 237, 237);
+  border-radius: 50px;
+  cursor: pointer;
+  vertical-align: middle;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority span::after,
+.settings__inputs-container__radiobuttons-container__radiobutton-time span::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 23px;
+  height: 23px;
+  background: rgb(255, 255, 255);
+  border-radius: 50px;
+}
+
+.settings__inputs-container__radiobuttons-container__radiobutton-priority label input:checked ~ span,
+.settings__inputs-container__radiobuttons-container__radiobutton-time label input:checked ~ span {
+  background: rgb(0, 159, 223);
+}
+
+.creatingGoal__body {
+  font-family: "Inter", sans-serif;
+  background-color: rgb(235, 235, 235);
+  padding: 30px 25px 30px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.creatingGoal__main-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(255, 255, 255);
+  width: 94%;
+  border-radius: 10px;
+  margin-left: 25px;
+  padding: 38px 80px;
+  justify-content: space-between;
+}
+
+.creatingGoal__inputs-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 0px 80px 0px 0px;
+}
+
+.creatingGoal__inputs-container__inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.creatingGoal__inputs-container__inputs__subcontainer__textInputs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.creatingGoal__inputs-container__inputs__subcontainer__photoInput {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.creatingGoal__inputs-container__buttons,
+.creatingGoal__inputs-container__buttons__subcontainer__buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px 0px 23px 0px;
+}
+
+.creatingGoal__inputs-container__buttons {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.creatingGoal__inputs-container__buttons__subcontainer__buttons {
+  margin: 0px;
+  justify-content: flex-end;
+}
+
+.creatingGoal__inputs-container__buttons_goBackButton {
+  display: flex;
+  flex-direction: row;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  align-items: center;
+  margin-top: 18px;
+  padding: 0px;
+  background: transparent;
+  border: none;
+}
+
+.creatingGoal__inputs-container__buttons_goBackButton__icon {
+  margin-right: 10px;
+}
+
+.creatingGoal__inputs-container__buttons_saveButton,
+.creatingGoal__inputs-container__buttons_cancelButton {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(0, 159, 223);
+  border: 2px solid rgb(0, 159, 223);
+  padding: 19px 49.5px;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.creatingGoal__inputs-container__buttons_cancelButton {
+  margin-left: 20px;
+  padding: 19px 65px;
+}
+
+.creatingGoal__inputs-container__inputs__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  font-size: 16px;
+  color: rgb(0, 159, 223);
+}
+
+.creatingGoal__inputs-container__inputs__inputItem {
+  width: 470px;
+  height: 57px;
+  background: rgb(237, 237, 237);
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 17px 0px 17px 20px;
+}
+
+.creatingGoal__inputs-container__inputs__inputItem::-moz-placeholder {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: rgb(41, 41, 41);
+}
+
+.creatingGoal__inputs-container__inputs__inputItem,
+.creatingGoal__inputs-container__inputs__inputItem::placeholder {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: rgb(41, 41, 41);
+}
+
+.creatingGoal__inputs-container__inputs__inputItem:focus::-moz-placeholder {
+  opacity: 0;
+}
+
+.creatingGoal__inputs-container__inputs__inputItem:focus::placeholder {
+  opacity: 0;
+}
+
+.creatingGoal__inputs-container__inputs__inputItem::-webkit-outer-spin-button,
+.creatingGoal__inputs-container__inputs__inputItem::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.creatingGoal__img-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 39%;
+}
+
+.creatingGoal__img-container__img {
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.creatingGoal__inputs-container__inputs__inputImageDownload {
+  display: none;
+  z-index: 2;
+  width: 285px;
+  height: 323px;
+}
+
+.creatingGoal__inputs-container__inputs__inputImageDownload__container,
+.creatingGoal__inputs-container__inputs__imagePreview {
+  margin: 38px 0px 0px 45px;
+  width: 285px;
+  height: 323px;
+  border-radius: 5px;
+  border: 1px solid rgb(237, 237, 237);
+  background-image: url("/assets/images/icons/creatinggoals-plus-downloading-images.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+
+.creatingGoal__inputs-container__inputs__imagePreview {
+  display: none;
+}
+
 .target__wrapper {
   display: flex;
   height: 100vh;
@@ -579,98 +870,6 @@ body {
     height: 60px;
   }
 }
-=======
-.settings__inputs-container__checkbox-select-container__select {
-  width: 470px;
-  background: rgb(237, 237, 237);
-  padding: 16.5px 20px;
-  box-sizing: border-box;
-  border: none;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-}
-
-.settings__inputs-container__radiobuttons-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority,
-.settings__inputs-container__radiobuttons-container__radiobutton-time {
-  border: none;
-  display: flex;
-  flex-direction: column;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority {
-  margin-right: 58px;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority legend,
-.settings__inputs-container__radiobuttons-container__radiobutton-time legend {
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1.3;
-  padding-bottom: 30px;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority label,
-.settings__inputs-container__radiobuttons-container__radiobutton-time label {
-  font-size: 24px;
-  line-height: 1.3;
-  display: block;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  margin-bottom: 15px;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority input,
-.settings__inputs-container__radiobuttons-container__radiobutton-time input {
-  opacity: 0;
-  position: absolute;
-  z-index: 1;
-  cursor: pointer;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority span,
-.settings__inputs-container__radiobuttons-container__radiobutton-time span {
-  position: relative;
-  display: inline-block;
-  margin-right: 10px;
-  width: 37px;
-  height: 37px;
-  background: rgb(237, 237, 237);
-  border-radius: 50px;
-  cursor: pointer;
-  vertical-align: middle;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority span::after,
-.settings__inputs-container__radiobuttons-container__radiobutton-time span::after {
-  content: "";
-  position: absolute;
-  top: 7px;
-  left: 7px;
-  width: 23px;
-  height: 23px;
-  background: rgb(255, 255, 255);
-  border-radius: 50px;
-}
-
-.settings__inputs-container__radiobuttons-container__radiobutton-priority label input:checked ~ span,
-.settings__inputs-container__radiobuttons-container__radiobutton-time label input:checked ~ span {
-  background: rgb(0, 159, 223);
-}
-
->>>>>>> ccb5950b01de6ac99507a5b7fba17aadb741e91b
 @media (max-width: 575px) {
   .authorization__body {
     gap: 50px;
