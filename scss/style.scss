@@ -83,6 +83,15 @@ button {
   border-radius: 50%;
   transition: background-color 0.3s ease-in-out;
 }
+
+// Стили для активных иконок, когда мы находимся на странице и её текущая иконка подсвечивается голубым, а сама становится белой
+.common-icon-wrapper.active {
+  background-color: $accent-light;
+}
+
+.common-icon-wrapper.active .icon {
+  stroke: white;
+}
 // Стили для тултипа с носиком
 .tooltip {
   position: absolute;
@@ -193,6 +202,17 @@ button {
   outline-width: 2px;
   outline-color: $accent-light;
   outline-style: solid;
+}
+
+// Страница home
+.main__wrapper {
+  flex: 1;
+  height: calc(100vh - 60px);
+  width: calc(100vw - 200px);
+  position: fixed;
+  left: 160px;
+  top: 30px;
+  bottom: 30px;
 }
 
 // Страница созданных целей

@@ -8,8 +8,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    const currentUrl = window.location.pathname.split('/').pop();
+    const navIcons = document.querySelectorAll('.common-icon-wrapper');
+    navIcons.forEach(icon => {
+        const iconUrl = icon.getAttribute('data-url');
+        console.log(iconUrl);
+        console.log(currentUrl);
+        if (iconUrl && currentUrl === iconUrl) {
+            icon.classList.add('active');
+        }
+    });
+
+
+
     renderTargets() 
 });
+
 
 function renderTargets() {
     let targets = JSON.parse(localStorage.getItem("targets")) || [];

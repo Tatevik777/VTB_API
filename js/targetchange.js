@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Переходы по страницам по клику на иконки навигационной панели
+    const iconWrappers = document.querySelectorAll('.icon-wrapper');
+    iconWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function () {
+            const url = this.getAttribute('data-url');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+
+
     const targetId = localStorage.getItem('editingTargetId'); // Получаем ID цели
     // console.log('Цель', targetId)
     // Загружаем все цели
@@ -31,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const endDateInput = document.getElementById('endDateInput');
 
     const targetImage = document.getElementById("targetImage");
+    const targetImageInput = document.getElementById('targetImageInput');
+
     const progressBar = document.querySelector(".progress-bar__wrapper");
     const addAmountInput = document.getElementById("addAmount");
     const addAmountBtn = document.getElementById("addAmountBtn");
@@ -56,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     priorityTime.textContent = target.priorityTime || 'Не указан'
     startDate.textContent = formatDate(target.startDate);
     endDate.textContent = formatDate(target.endDate);
-    targetImage.src = target.image;
+    targetImage.src = target.image || './assets/images/img/default-image.png';
 
     // Вычисляем процент прогресса
     function updateProgressBar() {
@@ -90,6 +104,9 @@ document.addEventListener('DOMContentLoaded', function () {
             endDate.style.display = 'none';
             endDateInput.style.display = 'inline-block';
             progressBar.style.display = 'none';
+            targetImage.style.display = 'none';
+            targetImageInput.style.display = 'inline-block';
+
     // Меняем кнопку Редактировать на кнопку Сохранить
             editButton.textContent = 'Сохранить';
             resetButton.style.display = 'inline-block';
@@ -124,6 +141,53 @@ document.addEventListener('DOMContentLoaded', function () {
             target.endDate = newEndDate;
             target.priorityTime = newPriorityTime;
             target.priorityLevel = newPriorityLevel;
+
+    // Меняем картинку, выбираем новый файл 
+
+        if (targetImageInput.files.length > 0) {
+            const file = targetImageInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const img = new Image();
+                img.src = event.target.result;
+
+                img.onload = function () {
+                // Сжимаем картинку с помощью canvas
+                    const canvas = document.createElement("canvas");
+                // Прописываем контекст рисования для рисования 2d графики
+                    const ctx = canvas.getContext("2d");
+
+                    const maxWidth = 270; // Максимальная ширина
+                    const maxHeight = 275; // Максимальная высота
+                    let width = img.width;
+                    let height = img.height;
+
+                // Сохраняем пропорции
+                    if (width > maxWidth || height > maxHeight) {
+                        const scale = Math.min(maxWidth / width, maxHeight / height);
+                        width *= scale;
+                        height *= scale;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                // Преобразуем в сжатый base64 (JPEG, 80% качества)
+                    target.image = canvas.toDataURL("image/jpeg", 0.8);
+                    targetImage.src = target.image;
+
+                // Сохраняем в local Storage
+                localStorage.setItem('targets', JSON.stringify(targets));
+                };
+            };
+            reader.readAsDataURL(file);
+        } else {
+            localStorage.setItem('targets', JSON.stringify(targets));
+        };
+        
+
     // Сохраняем изменения в массиве в localStorage
             const targetIndex = targets.findIndex(t => t.id == targetId)
             if (targetIndex !== -1) {
@@ -143,12 +207,24 @@ document.addEventListener('DOMContentLoaded', function () {
             startDateInput.style.display = 'none';
             endDate.style.display = 'inline-block';
             endDateInput.style.display = 'none';
-            progressBar.style.display = 'inline-block'
+            progressBar.style.display = 'inline-block';
+            targetImageInput.style.display = "none";
+            targetImage.style.display = "inline-block"
+            editButton.textContent = 'Редактировать';
+            resetButton.style.display = 'none';
     // Обновляем прогресс-бар
             updateProgressBar();
         }
     // Отключаем режим редактирования, используем логическое отрицание. Во время редактирования было true, станет опять false
         isEditing = !isEditing
+    });
+
+    // Вешаем слушателя события клик на кнопку Отмена
+    resetButton.addEventListener('click', () => {
+    // Отмена изменений
+        
+
+
     })
 
 

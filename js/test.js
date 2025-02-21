@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const saveGoalBtn = document.getElementById('saveGoalBtn');
     saveGoalBtn.addEventListener('click', saveGoal);
     const cancelGoalBtn = document.getElementById("cancelGoalBtn");
