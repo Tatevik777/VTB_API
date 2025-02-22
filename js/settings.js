@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   loadTargets();
   addTargetNamesToDropdown();
+  loadSettings();
 })
 
 const superPriority = document.getElementById("superPriority");
@@ -17,7 +18,7 @@ function loadTargets() {
 }
 
 function addTargetNamesToDropdown() {
-  goalName.innerHTML = '<option hidden value="">Выберите цель</option>'
+  // goalName.innerHTML = '<option hidden value="">Выберите цель</option>'
   if(targets.length === 0) {
     goalName.innerHTML += '<option value="">Нет доступных целей</option>';
     return;
@@ -30,41 +31,51 @@ function addTargetNamesToDropdown() {
   })
 }
 
-// let goalsList = [];
+function saveSettings() {
+  const selectedGoalId = goalName.value;
+  const isSuperPriority = superPriority.checked;
 
-// function GoalItem(goalName, superpriority, chousenPriority, chousenTime) {
-//   this.goalName = goalName;
-//   this.superpriority = superpriority;
-//   this.chousenPriority = chousenPriority;
-//   this.chousenTime = chousenTime;
-// }
+  let selectedPriorityLevel = ''
+  goalPriority.forEach(radio => {
+    if (radio.checked) selectedPriorityLevel = radio.value;
+  });
 
-// function saveGoalSettings() {
-//   const chousenPriority = Array.from(goalPriority).find((radio) => radio.checked).value;
-//   const chousenTime = Array.from(goalTime).find((radio) => radio.checked).value;
-//   let updatedGoal = new GoalItem(goalName.value, superPriority.checked, chousenPriority, chousenTime);
-//   let oldGoalIndex = goalsList.findIndex((goal) => goal.goalName === updatedGoal.goalName);
-//   if (oldGoalIndex !== -1) {
-//     goalsList[oldGoalIndex] = updatedGoal;
-//   } else {
-//     goalsList.push(updatedGoal);
-//   }
-//   localStorage.setItem("goalsList", JSON.stringify(goalsList));
-// }
-// saveButtonSettings.addEventListener("click", saveGoalSettings);
+  let selectedPriorityTime = ''
+  goalTime.forEach(radio => {
+    if (radio.checked) selectedPriorityTime = radio.value;
+  });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   localStorageLoading();
-// });
+  const settings = {
+    superPriorityId: isSuperPriority ? selectedGoalId : null,
+    priorityLevel: selectedPriorityLevel,
+    priorityTime: selectedPriorityTime
+  };
 
-// function localStorageLoading() {
-//   let storedGoals = localStorage.getItem("goalsList");
-//   if (storedGoals) {
-//     goalsList = JSON.parse(storedGoals);
-//   } else {
-//     goalsList = [];
-//   }
-// }
+  localStorage.setItem('settings', JSON.stringify(settings));
+  alert('Настройки сохранены')
+}
 
+function loadSettings() {
+  const savedSettings = JSON.parse(localStorage.getItem('settings'));
 
+  if (savedSettings.superPriorityId) {
+    goalName.value = savedSettings.superPriorityId;
+    superPriority.checked = true;
+  } else {
+    superPriority.checked = false;
+  }
 
+  goalPriority.forEach(radio => {
+    if (radio.value === savedSettings.priorityLevel) {
+      radio.checked = true;
+    }
+  });
+
+  goalTime.forEach(radio => {
+    if (radio.value === savedSettings.priorityTime) {
+      radio.checked = true;
+    }
+  });
+}
+
+saveButtonSettings.addEventListener('click', saveSettings)

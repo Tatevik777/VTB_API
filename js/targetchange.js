@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
     targetTitleInput.textContent = target.name;
     targetSum.textContent = `${target.amount} ₽;`
     targetSumInput.textContent = `${target.amount} ₽;`
-    priorityLevel.textContent = target.priorityLevel || 'Не указан';
-    priorityTime.textContent = target.priorityTime || 'Не указан'
+    priorityLevel.textContent = target.priorityLevelText || 'Не указан';
+    priorityTime.textContent = target.priorityTimeText || 'Не указан'
     startDate.textContent = formatDate(target.startDate);
     endDate.textContent = formatDate(target.endDate);
     targetImage.src = target.image || './assets/images/img/default-image.png';
@@ -115,8 +115,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const newSum = targetSumInput.value.trim();
             const newStartDate = startDateInput.value;
             const newEndDate = endDateInput.value;
-            const newPriorityLevel = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
-            const newPriorityTime = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
+            const newPriorityLevel = priorityLevelSelect.value;
+            const newPriorityTime = priorityTimeSelect.value;
+            const newPriorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
+            const newPriorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
     // Валидация базовая введённых данных
             if(!newTitle) {
                 alert('Введите название цели!');
@@ -129,8 +131,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Обновляем данные при клике на Сохранить
             targetTitle.textContent = newTitle;
             targetSum.textContent = newSum;
-            priorityLevel.textContent = newPriorityLevel;
-            priorityTime.textContent = newPriorityTime;
+            priorityLevel.textContent = newPriorityLevelText;
+            priorityTime.textContent = newPriorityTimeText;
             startDate.textContent = formatDate(newStartDate);
             endDate.textContent = formatDate(newEndDate);
 
@@ -140,7 +142,9 @@ document.addEventListener('DOMContentLoaded', function () {
             target.startDate = newStartDate;
             target.endDate = newEndDate;
             target.priorityTime = newPriorityTime;
+            target.priorityTimeText = newPriorityTimeText;
             target.priorityLevel = newPriorityLevel;
+            target.priorityLevelText = newPriorityLevelText;
 
     // Меняем картинку, выбираем новый файл 
 

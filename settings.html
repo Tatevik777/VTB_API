@@ -26,26 +26,50 @@
               value="superPriority"
               checked
             />
-            <span class="settings__inputs-container__checkbox-select-container__custom-checkbox__toggle"></span>
+            <span
+              class="settings__inputs-container__checkbox-select-container__custom-checkbox__toggle"
+            ></span>
             Суперприоритет</label
           >
-          <span class="settings__inputs-container__checkbox-select-container__notification-icon">?</span>
-          <p class="settings__inputs-container__checkbox-select-container__tooltip">
-            Цель со статусом «Суперприоритет» будет отображаться первой в списке и визуально выделяться.
+          <span
+            class="settings__inputs-container__checkbox-select-container__notification-icon"
+            >?</span
+          >
+          <p
+            class="settings__inputs-container__checkbox-select-container__tooltip"
+          >
+            Цель со статусом «Суперприоритет» будет отображаться первой в списке
+            и визуально выделяться.
           </p>
-          <select class="settings__inputs-container__checkbox-select-container__select" id="selectItem">
+          <select
+            class="settings__inputs-container__checkbox-select-container__select"
+            id="selectItem"
+          >
             <option hidden value="">Выберите цель</option>
           </select>
         </div>
         <div class="settings__inputs-container__radiobuttons-container">
-          <fieldset class="settings__inputs-container__radiobuttons-container__radiobutton-priority">
+          <fieldset
+            class="settings__inputs-container__radiobuttons-container__radiobutton-priority"
+          >
             <legend>По приоритету:</legend>
             <label for="high">
-              <input type="radio" id="high" name="goalPriority" value="high" checked />
+              <input
+                type="radio"
+                id="high"
+                name="goalPriority"
+                value="high"
+                checked
+              />
               <span></span>Высокий
             </label>
             <label for="average">
-              <input type="radio" id="average" name="goalPriority" value="average" />
+              <input
+                type="radio"
+                id="average"
+                name="goalPriority"
+                value="average"
+              />
               <span></span>Средний
             </label>
             <label for="low">
@@ -54,21 +78,39 @@
             </label>
           </fieldset>
 
-          <fieldset class="settings__inputs-container__radiobuttons-container__radiobutton-time">
+          <fieldset
+            class="settings__inputs-container__radiobuttons-container__radiobutton-time"
+          >
             <legend>По приоритету времени:</legend>
             <label for="shortTerm">
-              <input type="radio" id="shortTerm" name="goalTime" value="shortTerm" checked />
+              <input
+                type="radio"
+                id="shortTerm"
+                name="goalTime"
+                value="shortTerm"
+                checked
+              />
               <span></span>Краткосрочные
             </label>
             <label for="longTerm">
-              <input type="radio" id="longTerm" name="goalTime" value="longTerm" />
+              <input
+                type="radio"
+                id="longTerm"
+                name="goalTime"
+                value="longTerm"
+              />
               <span></span>Долгосрочные
             </label>
           </fieldset>
         </div>
       </div>
       <div class="settings__button-container">
-        <button class="settings__button-container__button-save" id="saveButtonSettings">Сохранить</button>
+        <button
+          class="settings__button-container__button-save"
+          id="saveButtonSettings"
+        >
+          Сохранить
+        </button>
       </div>
     </section>
     <script src="/js/settings.js"></script>

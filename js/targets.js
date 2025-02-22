@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-
     renderTargets() 
 });
 
@@ -29,7 +27,39 @@ document.addEventListener('DOMContentLoaded', function () {
 function renderTargets() {
     let targets = JSON.parse(localStorage.getItem("targets")) || [];
 
-    targets.forEach(target => {
+    const settings = JSON.parse(localStorage.getItem('settings')) || {};
+
+    const superPriorityId = settings.superPriorityId;
+    const priorityLevel = settings.priorityLevel;
+    const priorityTime = settings.priorityTime;
+
+    console.log(superPriorityId);
+    console.log(priorityLevel);
+    console.log(priorityTime);
+
+
+    const superPriorityTarget = targets.find(target => Number(target.id) === Number(superPriorityId));
+    const priorityTargets = targets.filter(target => target.priorityLevel === priorityLevel && target.priorityTime === priorityTime);
+    const otherTargets = targets.filter(target => !(target.priorityLevel === priorityLevel && target.priorityTime === priorityTime));
+
+    const sortedTargets = [];
+
+    if (superPriorityTarget) {
+        console.log(superPriorityTarget);
+        sortedTargets.push(superPriorityTarget);
+    }
+
+    console.log(priorityTargets)
+    sortedTargets.push(...priorityTargets);
+    console.log(otherTargets)
+    sortedTargets.push(...otherTargets);
+
+    console.log(sortedTargets);
+
+    const targetsContainer = document.getElementById("targetsContainer");
+    targetsContainer.innerHTML = ''; 
+
+    sortedTargets.forEach(target => {
     // Проверяем, нет ли уже такой цели в контейнере
         if (!document.querySelector(`[data-id="${target.id}"]`)) {
             addTargetToDOM(target);
@@ -38,7 +68,7 @@ function renderTargets() {
 }
 
 function addTargetToDOM(target) {
-    const targetsContainer = document.getElementById("targetsContainer");
+    // const targetsContainer = document.getElementById("targetsContainer");
     const targetElement = document.createElement("div");
     targetElement.classList.add("target__items-item");
     targetElement.setAttribute("data-id", target.id);

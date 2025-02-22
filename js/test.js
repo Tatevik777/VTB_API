@@ -20,14 +20,16 @@ function cancelGoal() {
 function saveGoal() {
     const targetName = document.getElementById("targetName").value.trim();
     const targetAmount = document.getElementById("targetAmount").value.trim();
-    let initialDeposit = document.getElementById("initialDeposit").value.trim();
+    // let initialDeposit = document.getElementById("initialDeposit").value.trim();
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
     const targetImageInput = document.getElementById("targetImage");
     const priorityTimeSelect = document.getElementById('priorityTime');
     const priorityLevelSelect = document.getElementById('priorityLevel');
-    const priorityTime = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
-    const priorityLevel = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
+    const priorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
+    const priorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
+    const priorityTime = priorityTimeSelect.value;
+    const priorityLevel = priorityLevelSelect.value;
 
     if (!targetName || !targetAmount) {
         alert("Введите название и сумму цели!");
@@ -35,7 +37,7 @@ function saveGoal() {
     }
 
     const targetAmountNum = Number(targetAmount);
-    initialDeposit = initialDeposit ? Number(initialDeposit) : 0;
+    const initialDeposit = 0;
 
 
     // Создаём объект новой цели. По дефолту устанавливаем картинку, если пользователь не добавит картинку цели
@@ -48,6 +50,8 @@ function saveGoal() {
         endDate,
         priorityTime,
         priorityLevel,
+        priorityTimeText,
+        priorityLevelText,
         image: "./assets/images/img/default-image.png",  
     };
 
