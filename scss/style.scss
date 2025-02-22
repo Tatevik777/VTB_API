@@ -164,22 +164,12 @@ body {
 }
 
 //Страница "Настройки"
-.settings__body {
-  font-family: $font-family;
-  background-color: $bg-grey;
-  padding: 30px 26px 30px 20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .settings__main-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   background-color: $bg-white;
-  width: 94%;
+  width: 93%;
   border-radius: 10px;
   margin-left: 25px;
   padding: 38px 80px;
@@ -193,7 +183,7 @@ body {
   align-content: flex-start;
 }
 
-.settings__inputs-container__title {
+.settings__title {
   display: inline;
   font-family: $font-family;
   font-weight: 700;
@@ -211,7 +201,7 @@ body {
   align-items: flex-start;
 }
 
-.settings__button-container__button-save {
+.settings__saveButton {
   font-family: $font-family;
   font-weight: 500;
   font-size: 24px;
@@ -223,14 +213,14 @@ body {
   box-sizing: border-box;
 }
 
-.settings__button-container__button-save:hover {
+.settings__saveButton:hover {
   background-color: $bg-white;
   color: $accent-dark;
   font-weight: 700;
   border: 4px solid $accent-dark;
 }
 
-.settings__inputs-container__checkbox-select-container {
+.settings__checkbox-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -238,7 +228,7 @@ body {
   margin-bottom: 50px;
 }
 
-.settings__inputs-container__checkbox-select-container__custom-checkbox__label {
+.settings__custom-checkbox__label {
   position: relative;
   display: flex;
   align-items: center;
@@ -247,13 +237,13 @@ body {
   font-size: 24px;
 }
 
-.settings__inputs-container__checkbox-select-container__custom-checkbox__input {
+.settings__custom-checkbox__input {
   opacity: 0;
   position: absolute;
   z-index: -1;
 }
 
-.settings__inputs-container__checkbox-select-container__custom-checkbox__toggle {
+.settings__custom-checkbox__toggle {
   position: relative;
   display: inline-block;
   margin: 0 15px 0 0;
@@ -265,7 +255,7 @@ body {
   cursor: pointer;
 }
 
-.settings__inputs-container__checkbox-select-container__custom-checkbox__toggle::after {
+.settings__custom-checkbox__toggle::after {
   content: "";
   position: absolute;
   top: 4.5px;
@@ -277,18 +267,16 @@ body {
   transition: left 0.2s ease-in-out, width 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.settings__inputs-container__checkbox-select-container__custom-checkbox__input:checked
-  + .settings__inputs-container__checkbox-select-container__custom-checkbox__toggle {
+.settings__custom-checkbox__input:checked + .settings__custom-checkbox__toggle {
   background: $accent-light;
 }
 
-.settings__inputs-container__checkbox-select-container__custom-checkbox__input:checked
-  + .settings__inputs-container__checkbox-select-container__custom-checkbox__toggle::after {
+.settings__custom-checkbox__input:checked + .settings__custom-checkbox__toggle::after {
   left: calc(100% - 4.5px);
   transform: translateX(-100%);
 }
 
-.settings__inputs-container__checkbox-select-container__notification-icon {
+.settings__notification-icon {
   position: relative;
   display: flex;
   margin: 0 13px 0 15px;
@@ -300,7 +288,7 @@ body {
   justify-content: center;
 }
 
-.settings__inputs-container__checkbox-select-container__tooltip {
+.settings__tooltip {
   position: absolute;
   z-index: 1;
   width: 300px;
@@ -316,14 +304,12 @@ body {
   display: none;
 }
 
-.settings__inputs-container__checkbox-select-container__notification-icon:hover
-  + .settings__inputs-container__checkbox-select-container__tooltip,
-.settings__inputs-container__checkbox-select-container__notification-icon:focus
-  + .settings__inputs-container__checkbox-select-container__tooltip {
+.settings__notification-icon:hover + .settings__tooltip,
+.settings__notification-icon:focus + .settings__tooltip {
   display: block;
 }
 
-.settings__inputs-container__checkbox-select-container__select {
+.settings__select {
   width: 470px;
   background: $grey;
   padding: 16.5px 20px;
@@ -334,25 +320,25 @@ body {
   font-size: 18px;
 }
 
-.settings__inputs-container__radiobuttons-container {
+.settings__radiobuttons-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority,
-.settings__inputs-container__radiobuttons-container__radiobutton-time {
+.settings__radiobutton-priority,
+.settings__radiobutton-time {
   border: none;
   display: flex;
   flex-direction: column;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority {
+.settings__radiobutton-priority {
   margin-right: 58px;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority legend,
-.settings__inputs-container__radiobuttons-container__radiobutton-time legend {
+.settings__radiobutton-priority legend,
+.settings__radiobutton-time legend {
   font-family: $font-family;
   font-weight: 700;
   font-size: 24px;
@@ -360,8 +346,8 @@ body {
   padding-bottom: 30px;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority label,
-.settings__inputs-container__radiobuttons-container__radiobutton-time label {
+.settings__radiobutton-priority label,
+.settings__radiobutton-time label {
   font-size: 24px;
   line-height: 1.3;
   display: block;
@@ -371,16 +357,16 @@ body {
   margin-bottom: 15px;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority input,
-.settings__inputs-container__radiobuttons-container__radiobutton-time input {
+.settings__radiobutton-priority input,
+.settings__radiobutton-time input {
   opacity: 0;
   position: absolute;
   z-index: 1;
   cursor: pointer;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority span,
-.settings__inputs-container__radiobuttons-container__radiobutton-time span {
+.settings__radiobutton-priority span,
+.settings__radiobutton-time span {
   position: relative;
   display: inline-block;
   margin-right: 10px;
@@ -394,8 +380,8 @@ body {
   z-index: 1;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority span::after,
-.settings__inputs-container__radiobuttons-container__radiobutton-time span::after {
+.settings__radiobutton-priority span::after,
+.settings__radiobutton-time span::after {
   content: "";
   position: absolute;
   top: 7px;
@@ -406,21 +392,16 @@ body {
   border-radius: 50px;
 }
 
-.settings__inputs-container__radiobuttons-container__radiobutton-priority label input:checked ~ span,
-.settings__inputs-container__radiobuttons-container__radiobutton-time label input:checked ~ span {
+.settings__radiobutton-priority label input:checked ~ span,
+.settings__radiobutton-time label input:checked ~ span {
   background: $accent-light;
 }
 //Конец страницы "Настройки"
 
 //Страница "Создание цели"
-.creatingGoal__body {
-  font-family: $font-family;
-  background-color: $bg-grey;
-  padding: 30px 25px 30px 20px;
-  display: flex;
-  flex-direction: row;
+.target__wrapper__right {
+  justify-content: flex-end;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .creatingGoal__main-wrapper {
@@ -428,7 +409,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   background-color: $bg-white;
-  width: 94%;
+  width: 93%;
   border-radius: 10px;
   margin-left: 25px;
   padding: 38px 80px;
@@ -451,14 +432,14 @@ body {
   justify-content: space-between;
 }
 
-.creatingGoal__inputs-container__inputs__subcontainer__textInputs {
+.creatingGoal__inputs__subcontainer__textInputs {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: flex-start;
 }
 
-.creatingGoal__inputs-container__inputs__subcontainer__photoInput {
+.creatingGoal__inputs__subcontainer__photoInput {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -479,12 +460,13 @@ body {
   justify-content: space-between;
 }
 
-.creatingGoal__inputs-container__buttons__subcontainer__buttons {
+.creatingGoal__buttons__subcontainer {
   margin: 0px;
   justify-content: flex-end;
+  align-items: stretch;
 }
 
-.creatingGoal__inputs-container__buttons_goBackButton {
+.creatingGoal__buttons__goBackButton {
   display: flex;
   flex-direction: row;
   font-family: $font-family;
@@ -497,14 +479,15 @@ body {
   padding: 0px;
   background: transparent;
   border: none;
+  cursor: pointer;
 }
 
-.creatingGoal__inputs-container__buttons_goBackButton__icon {
+.creatingGoal__buttons_goBackButton__icon {
   margin-right: 10px;
 }
 
-.creatingGoal__inputs-container__buttons_saveButton,
-.creatingGoal__inputs-container__buttons_cancelButton {
+.creatingGoal__buttons_saveButton,
+.creatingGoal__buttons_cancelButton {
   font-family: $font-family;
   font-weight: 600;
   font-size: 20px;
@@ -516,12 +499,12 @@ body {
   cursor: pointer;
 }
 
-.creatingGoal__inputs-container__buttons_cancelButton {
+.creatingGoal__buttons_cancelButton {
   margin-left: 20px;
   padding: 19px 65px;
 }
 
-.creatingGoal__inputs-container__inputs__label {
+.creatingGoal__inputs__label {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
@@ -532,7 +515,7 @@ body {
   color: $accent-light;
 }
 
-.creatingGoal__inputs-container__inputs__inputItem {
+.creatingGoal__inputs__inputItem {
   width: 470px;
   height: 57px;
   background: $grey;
@@ -542,8 +525,8 @@ body {
   padding: 17px 0px 17px 20px;
 }
 
-.creatingGoal__inputs-container__inputs__inputItem,
-.creatingGoal__inputs-container__inputs__inputItem::placeholder {
+.creatingGoal__inputs__inputItem,
+.creatingGoal__inputs__inputItem::placeholder {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   line-height: 1.3;
@@ -552,12 +535,12 @@ body {
   color: $text;
 }
 
-.creatingGoal__inputs-container__inputs__inputItem:focus::placeholder {
+.creatingGoal__inputs__inputItem:focus::placeholder {
   opacity: 0;
 }
 
-.creatingGoal__inputs-container__inputs__inputItem::-webkit-outer-spin-button,
-.creatingGoal__inputs-container__inputs__inputItem::-webkit-inner-spin-button {
+.creatingGoal__inputs__inputItem::-webkit-outer-spin-button,
+.creatingGoal__inputs__inputItem::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
@@ -575,15 +558,14 @@ body {
   object-fit: contain;
 }
 
-.creatingGoal__inputs-container__inputs__inputImageDownload {
+.creatingGoal__inputs__imageDownload {
   display: none;
   z-index: 2;
   width: 285px;
   height: 323px;
 }
 
-.creatingGoal__inputs-container__inputs__inputImageDownload__container,
-.creatingGoal__inputs-container__inputs__imagePreview {
+.creatingGoal__inputs__imageDownloadContainer {
   margin: 38px 0px 0px 45px;
   width: 285px;
   height: 323px;
@@ -594,10 +576,6 @@ body {
   background-position: center;
   object-fit: cover;
   cursor: pointer;
-}
-
-.creatingGoal__inputs-container__inputs__imagePreview {
-  display: none;
 }
 
 //Конец страницы "Создание цели"
