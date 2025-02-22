@@ -612,3 +612,9 @@ button {
 .greeting__wrapper__top-image {
   margin: 20px;
 }
+
+.greeting__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
