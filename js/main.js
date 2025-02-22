@@ -43,3 +43,11 @@ function renderTargets() {
         }
     });
 }
+
+function addTargetToDOM(target) {
+    const targetsContainer = document.getElementById("body_items_wrapper");
+    const targetElement = document.createElement("div");
+    targetElement.classList.add("body__items-item");
+    targetElement.setAttribute("data-id", target.id);
+
+};
