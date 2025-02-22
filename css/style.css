@@ -597,4 +597,18 @@ button {
   display: flex;
   background-color: rgb(255, 255, 255);
   align-items: center;
+  border-radius: 10px;
+}
+
+.greeting__wrapper__top-text {
+  display: flex;
+  flex-direction: column;
+  color: rgb(10, 41, 115);
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.greeting__wrapper__top-image {
+  margin: 20px;
 }

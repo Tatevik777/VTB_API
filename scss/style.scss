@@ -593,14 +593,29 @@ button {
 .greeting__wrapper{
   display: flex;
   flex-direction: column;
-  gap:30px 
+  gap:30px ;
+  
 }
+
 .greeting__wrapper__top{
   display: flex;
   background-color:$bg-white;  
   align-items: center; 
-  }
-  .greeting__wrapper__top-text{
-    text-decoration-color: $accent-dark;
-  }
+  border-radius:10px;
+ 
+}
 
+  .greeting__wrapper__top-text{
+  display: flex;
+  flex-direction: column;
+  color: $accent-dark;
+  font-weight: bold;
+  font-size: 30px;
+  margin-left:20px;
+
+  }
+  .greeting__wrapper__top-image{
+    margin: 20px;
+
+  }
+//главная страница
