@@ -564,7 +564,43 @@ button {
     height: 282px;
     inset-block-start: calc(50% - 141px);
   }
+//главная страница
+.goals__info__wrapper{
+  display: flex;
+
+}
+.greeting{
+  background-color:$bg-white ;
+  width: 410;
+  height: 200;
+  top: 30px;
+  left: 25px;
+  
+}
+
 }
 //главная страница
+.main__wrapper{
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 60px);
+  width: calc(100vw - 200px);
+  position: fixed;
+  left: 160px;
+  top: 30px;
+  bottom: 30px;
+}
+.greeting__wrapper{
+  display: flex;
+  flex-direction: column;
+  gap:30px 
+}
+.greeting__wrapper__top{
+  display: flex;
+  background-color:$bg-white;  
+  align-items: center; 
+  }
+  .greeting__wrapper__top-text{
+    text-decoration-color: $accent-dark;
+  }
 
-//главная страница

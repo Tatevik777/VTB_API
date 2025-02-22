@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTB API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+ 
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+ 
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .goals {
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+ 
+        .goal {
+            background: #e8f1ff;
+            padding: 10px;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 10px;
+        }
+ 
+        .chart {
+            height: 300px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+        }
+ 
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+ 
+        button {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="container">
+        <h1>Привет, Бот!</h1>
+        
+        <div class="goals">
+            <div class="goal">
+                <h2>Всего целей</h2>
+                <p id="totalGoals">0 тыс.</p>
+            </div>
+            <div class="goal">
+                <h2>Всего целевых</h2>
+                <p id="targetGoals">0 шт.</p>
+            </div>
+        </div>
+ 
+        <button id="addGoal">Добавить цель</button>
+ 
+        <div class="chart">
+            <canvas id="myChart"></canvas>
+        </div>
+ 
+        <div class="footer">
+            © 2023 VTB API
+        </div>
+    </div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        let totalGoals = 120000; // Изначальное значение
+        let targetGoals = 50; // Изначальное значение
+        let goalData = [12, 19, 3, 5, 2, 3, 10]; // Данные графика
+ 
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл'],
+                datasets: [{
+                    label: 'Данные',
+                    data: goalData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+ 
+        document.getElementById('addGoal').addEventListener('click', function() {
+            totalGoals += 10000; // Увеличиваем общее количество целей
+            targetGoals += 1; // Увеличиваем количество целевых целей
+            goalData.push(Math.floor(Math.random() * 20) + 1); // Добавляем новое случайное значение в график
+            
+            // Обновляем отображение
+            document.getElementById('totalGoals').innerText = totalGoals.toLocaleString() + ' тыс.';
+            document.getElementById('targetGoals').innerText = targetGoals + ' шт.';
+            
+            // Обновляем график
+            myChart.data.datasets[0].data = goalData;
+            myChart.update();
+        });
+    </script>
+</body>
+</html>
