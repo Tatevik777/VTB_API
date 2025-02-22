@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+// Для Саши Предлагаю при загрузке документа, объявить функцию установки минимальной даты. Чтобы несколько раз нам не загрудать DOMContentLoaded
+    setMinDate();
 
     const saveGoalBtn = document.getElementById('saveGoalBtn');
     saveGoalBtn.addEventListener('click', saveGoal);
@@ -6,7 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cancelGoalBtn) {
         cancelGoalBtn.addEventListener('click', cancelGoal)
     }
+// Для Саши Предлагаю сразу здесь и кнопку назад обозначить, раз мы здесь объявляем кнопку сохранить и отменить
+    const backBtn = document.getElementById('backButton');
+    backBtn.addEventListener('click', goBack);
 });
+
+function setMinDate() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').min = today;
+    document.getElementById('endDate').min = today;
+}
+
+// Для Саши Функция для возврата назад
+function goBack() {
+    window.history.back();
+}
+
 
 function cancelGoal() {
     // Подтверждение перед удалением
@@ -20,12 +37,15 @@ function cancelGoal() {
 function saveGoal() {
     const targetName = document.getElementById("targetName").value.trim();
     const targetAmount = document.getElementById("targetAmount").value.trim();
+// Для Саши Убрала первоначальный взнос
     // let initialDeposit = document.getElementById("initialDeposit").value.trim();
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
     const targetImageInput = document.getElementById("targetImage");
     const priorityTimeSelect = document.getElementById('priorityTime');
     const priorityLevelSelect = document.getElementById('priorityLevel');
+
+// Для Саши. Саш, пожалуйста, поменяй последние строчки на эти. Это очень важно для моей страницы
     const priorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
     const priorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
     const priorityTime = priorityTimeSelect.value;
@@ -37,6 +57,8 @@ function saveGoal() {
     }
 
     const targetAmountNum = Number(targetAmount);
+
+// Для Саши. Выносим нулевой вклад сюда
     const initialDeposit = 0;
 
 
@@ -48,6 +70,7 @@ function saveGoal() {
         progress: initialDeposit,
         startDate,
         endDate,
+        // Для Саши: Вот такие приоритеты устанавливаем. 
         priorityTime,
         priorityLevel,
         priorityTimeText,
@@ -87,7 +110,7 @@ function saveGoal() {
 
                 // Преобразуем в сжатый base64 (JPEG, 80% качества)
                 newTarget.image = canvas.toDataURL("image/jpeg", 0.8);
-
+// Для Саши: Предлагаю вынести отдельную функцию для сохранения в хранилище
                 saveToLocalStorage(newTarget)
             };
         };
@@ -95,10 +118,11 @@ function saveGoal() {
         reader.readAsDataURL(file);
     } 
     else {
+// Для Саши
         saveToLocalStorage(newTarget)
     }
 }
-
+// Для Саши
 function saveToLocalStorage(target) {
     let targets = JSON.parse(localStorage.getItem("targets")) || [];
     targets.push(target);
