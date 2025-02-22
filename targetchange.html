@@ -194,6 +194,7 @@
               <a
                 href="/targets.html"
                 class="editing-target__buttons-bar__return-link"
+                id="backButton"
               >
                 <img src="./assets/images/icons/Chevron Left.svg" alt="" />
                 <span>Назад</span>
@@ -209,13 +210,16 @@
               <div class="editing-target__main-left">
                 <h1 class="target-title" id="targetTitle"></h1>
                 <input
+                  class="targetchange__inputs__inputItem"
                   type="text"
                   id="targetTitleInput"
                   value=""
                   placeholder="Название цели"
                   style="display: none"
                 />
-                <p class="target-info-title">Прогресс цели</p>
+                <p class="target-info-title" id="targetInfoTitle">
+                  Прогресс цели
+                </p>
                 <div class="progress-bar__wrapper">
                   <!-- <div class="progress-bar"></div> -->
                 </div>
@@ -226,6 +230,7 @@
                     >
                     <span id="targetSum"></span>
                     <input
+                      class="targetchange__inputs__inputItem"
                       type="text"
                       id="targetSumInput"
                       value=""
@@ -237,12 +242,17 @@
                     <span class="target-info__label">Приоритет цели:</span>
                     <span id="priorityLevel"></span>
                     <select
+                      type="text"
+                      class="targetchange__inputs__inputItem"
                       id="priorityLevelSelect"
                       name="priorityLevelSelect"
                       style="display: none"
                     >
+                      <option value="" disabled selected>
+                        Выберите приоритет
+                      </option>
                       <option value="high">Высокий</option>
-                      <option value="medium">Средний</option>
+                      <option value="average">Средний</option>
                       <option value="low">Низкий</option>
                     </select>
                   </div>
@@ -252,12 +262,13 @@
                     >
                     <span id="priorityTime"></span>
                     <select
+                      class="targetchange__inputs__inputItem"
                       id="priorityTimeSelect"
                       name="priorityTimeSelect"
                       style="display: none"
                     >
-                      <option value="short-term">Краткосрочный</option>
-                      <option value="long-term">Долгосрочный</option>
+                      <option value="shortTerm">Краткосрочный</option>
+                      <option value="longTerm">Долгосрочный</option>
                     </select>
                   </div>
                   <div class="target-info__target-start-date">
@@ -266,6 +277,7 @@
                     >
                     <span id="startDate"></span>
                     <input
+                      class="targetchange__inputs__inputItem"
                       type="date"
                       id="startDateInput"
                       style="display: none"
@@ -277,6 +289,7 @@
                     >
                     <span id="endDate"></span>
                     <input
+                      class="targetchange__inputs__inputItem"
                       type="date"
                       id="endDateInput"
                       style="display: none"

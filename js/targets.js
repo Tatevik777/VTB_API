@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function renderTargets() {
+    
     let targets = JSON.parse(localStorage.getItem("targets")) || [];
 
     const settings = JSON.parse(localStorage.getItem('settings')) || {};
@@ -61,9 +62,9 @@ function renderTargets() {
 
     sortedTargets.forEach(target => {
     // Проверяем, нет ли уже такой цели в контейнере
-        if (!document.querySelector(`[data-id="${target.id}"]`)) {
+        // if (!document.querySelector(`[data-id="${target.id}"]`)) {
             addTargetToDOM(target);
-        }
+        // }
     });
 }
 

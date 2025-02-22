@@ -8,30 +8,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.location.href = url;
             }
         });
+    // const backButton = document.getElementById('backButton');
+    // backButton.addEventListener('click', () => {
+    //     window.location.href = 'targets.html';
+    // })
     });
 
-
+    
     const targetId = localStorage.getItem('editingTargetId'); // Получаем ID цели
-    // console.log('Цель', targetId)
+    console.log('Цель', targetId)
     // Загружаем все цели
     const targets = JSON.parse(localStorage.getItem('targets')) || []; 
     // Ищем нужную цель
-    const target = targets.find(t => String(t.id) === targetId); // 
+    const target = targets.find(t => String(t.id) === targetId); 
+
 
     if (!target) {
         alert('Цель не найдена!');
         return;
     }
 
+
+
+
 // Находим элементы на странице. А именно отображаемый сразу и инпут, на который элемент заменится при редактировании
     const targetTitle = document.getElementById("targetTitle");
     const targetTitleInput = document.getElementById('targetTitleInput');
+
+    const targetInfoTitle = document.getElementById('targetInfoTitle');
 
     const targetSum = document.getElementById("targetSum");
     const targetSumInput = document.getElementById('targetSumInput')
 
     const priorityLevel = document.getElementById("priorityLevel");
-    const priorityLevelSelect = document.getElementById('priorityLevelSelect')
+    const priorityLevelSelect = document.getElementById('priorityLevelSelect');
+    const currentPriorityLevelText = document.getElementById('currentPriorityLevelText');
 
     const priorityTime = document.getElementById('priorityTime');
     const priorityTimeSelect = document.getElementById('priorityTimeSelect');
@@ -63,13 +74,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Заполняем данными страницу цели, а также заполняем этими же данными инпуты, которые откроются при редактировании
     targetTitle.textContent = target.name;
-    targetTitleInput.textContent = target.name;
+    targetTitleInput.value = target.name;
     targetSum.textContent = `${target.amount} ₽;`
-    targetSumInput.textContent = `${target.amount} ₽;`
+    targetSumInput.value = target.amount;
     priorityLevel.textContent = target.priorityLevelText || 'Не указан';
-    priorityTime.textContent = target.priorityTimeText || 'Не указан'
+    priorityLevelSelect.value = target.priorityLevel || 'Не указан';
+    priorityTime.textContent = target.priorityTimeText || 'Не указан';
+    priorityTimeSelect.value = target.priorityTime || 'Не указан';
     startDate.textContent = formatDate(target.startDate);
+    startDateInput.value = target.startDate;
     endDate.textContent = formatDate(target.endDate);
+    endDateInput.value = target.endDate;
     targetImage.src = target.image || './assets/images/img/default-image.png';
 
     // Вычисляем процент прогресса
@@ -93,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Выключаем статичные поля, подключаем динамические инпуты для введения отредактированной информации
             targetTitle.style.display = 'none';
             targetTitleInput.style.display = 'inline-block';
+            targetInfoTitle.style.display = 'none';
             targetSum.style.display = 'none';
             targetSumInput.style.display = 'inline-block';
             priorityLevel.style.display = 'none';
@@ -130,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
     // Обновляем данные при клике на Сохранить
             targetTitle.textContent = newTitle;
-            targetSum.textContent = newSum;
+            targetSum.textContent = `${newSum}  ₽`;
             priorityLevel.textContent = newPriorityLevelText;
             priorityTime.textContent = newPriorityTimeText;
             startDate.textContent = formatDate(newStartDate);
@@ -184,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Сохраняем в local Storage
                 localStorage.setItem('targets', JSON.stringify(targets));
+
                 };
             };
             reader.readAsDataURL(file);
@@ -196,8 +213,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetIndex = targets.findIndex(t => t.id == targetId)
             if (targetIndex !== -1) {
                 targets[targetIndex] = target;
+                
                 localStorage.setItem('targets', JSON.stringify(targets));
             }
+
+
     // Выходим из режима редактирования, скрываем инпуты
             targetTitle.style.display = 'inline-block';
             targetTitleInput.style.display = 'none'
@@ -224,12 +244,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Вешаем слушателя события клик на кнопку Отмена
-    resetButton.addEventListener('click', () => {
+    // resetButton.addEventListener('click', () => {
     // Отмена изменений
         
 
 
-    })
+    // })
 
 
 });
