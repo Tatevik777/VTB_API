@@ -164,50 +164,105 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Меняем картинку, выбираем новый файл 
 
-        if (targetImageInput.files.length > 0) {
-            const file = targetImageInput.files[0];
-            const reader = new FileReader();
+        // if (targetImageInput.files.length > 0) {
+        //     const file = targetImageInput.files[0];
+        //     const reader = new FileReader();
 
-            reader.onload = function (event) {
-                const img = new Image();
-                img.src = event.target.result;
+        //     reader.onload = function (event) {
+        //         const img = new Image();
+        //         img.src = event.target.result;
 
-                img.onload = function () {
-                // Сжимаем картинку с помощью canvas
-                    const canvas = document.createElement("canvas");
-                // Прописываем контекст рисования для рисования 2d графики
-                    const ctx = canvas.getContext("2d");
+        //         img.onload = function () {
+        //         // Сжимаем картинку с помощью canvas
+        //             const canvas = document.createElement("canvas");
+        //         // Прописываем контекст рисования для рисования 2d графики
+        //             const ctx = canvas.getContext("2d");
 
-                    const maxWidth = 270; // Максимальная ширина
-                    const maxHeight = 275; // Максимальная высота
-                    let width = img.width;
-                    let height = img.height;
+        //             const maxWidth = 270; // Максимальная ширина
+        //             const maxHeight = 275; // Максимальная высота
+        //             let width = img.width;
+        //             let height = img.height;
 
-                // Сохраняем пропорции
-                    if (width > maxWidth || height > maxHeight) {
-                        const scale = Math.min(maxWidth / width, maxHeight / height);
-                        width *= scale;
-                        height *= scale;
-                    }
+        //         // Сохраняем пропорции
+        //             if (width > maxWidth || height > maxHeight) {
+        //                 const scale = Math.min(maxWidth / width, maxHeight / height);
+        //                 width *= scale;
+        //                 height *= scale;
+        //             }
 
-                    canvas.width = width;
-                    canvas.height = height;
-                    ctx.drawImage(img, 0, 0, width, height);
+        //             canvas.width = width;
+        //             canvas.height = height;
+        //             ctx.drawImage(img, 0, 0, width, height);
 
-                // Преобразуем в сжатый base64 (JPEG, 80% качества)
-                    target.image = canvas.toDataURL("image/jpeg", 0.8);
-                    targetImage.src = target.image;
+        //         // Преобразуем в сжатый base64 (JPEG, 80% качества)
+        //             target.image = canvas.toDataURL("image/jpeg", 0.8);
+        //             targetImage.src = target.image;
 
-                // Сохраняем в local Storage
-                localStorage.setItem('targets', JSON.stringify(targets));
+        //         // Сохраняем в local Storage
+        //         localStorage.setItem('targets', JSON.stringify(targets));
 
-                };
-            };
-            reader.readAsDataURL(file);
-        } else {
-            localStorage.setItem('targets', JSON.stringify(targets));
-        };
+        //         };
+        //     };
+        //     reader.readAsDataURL(file);
+        // } else {
+        //     localStorage.setItem('targets', JSON.stringify(targets));
+        // };
         
+
+
+        // targetImageInput.addEventListener('change', function () {
+        //     // Проверяем выбран ли был файл
+        //     if (this.files?.[0]) {
+        //     // Получаем файл
+        //         const file = this.files[0];
+        //     // Создаём объект для чтения файла
+        //         const reader = new FileReader();
+        //         reader.onload = function (event) {
+        //     // Показываем превью
+        //             targetImage.src = event.target.result;
+        //             targetImage.style.display = 'inline-block'
+
+        //             const img = new Image();
+        //             img.src = event.target.result;
+
+        //             img.onload = function() {
+        //                 compressAndSaveImage(img);
+        //             };
+        //         };
+        //         reader.readAsDataURL(file);
+        //     };
+        // });
+
+        // function compressAndSaveImage(img) {
+        //     // Сжимаем картинку с помощью canvas
+        //     const canvas = document.createElement("canvas");
+        //     // Прописываем контекст рисования для рисования 2d графики
+        //     const ctx = canvas.getContext("2d");
+
+        //     const maxWidth = 270; // Максимальная ширина
+        //     const maxHeight = 275; // Максимальная высота
+        //     let width = img.width;
+        //     let height = img.height;
+
+        //     // Сохраняем пропорции
+        //     if (width > maxWidth || height > maxHeight) {
+        //         const scale = Math.min(maxWidth / width, maxHeight / height);
+        //         width *= scale;
+        //         height *= scale;
+        //     }
+
+        //     canvas.width = width;
+        //     canvas.height = height;
+        //     ctx.drawImage(img, 0, 0, width, height);
+
+        //     // Преобразуем в сжатый base64 (JPEG, 80% качества)
+        //     target.image = canvas.toDataURL("image/jpeg", 0.8);
+        //     targetImage.src = target.image;
+
+        //     // Сохраняем в local Storage
+        //     localStorage.setItem('targets', JSON.stringify(targets));
+        // };
+
 
     // Сохраняем изменения в массиве в localStorage
             const targetIndex = targets.findIndex(t => t.id == targetId)
@@ -242,6 +297,61 @@ document.addEventListener('DOMContentLoaded', function () {
     // Отключаем режим редактирования, используем логическое отрицание. Во время редактирования было true, станет опять false
         isEditing = !isEditing
     });
+
+
+    targetImageInput.addEventListener('change', function () {
+        // Проверяем выбран ли был файл
+        if (this.files?.[0]) {
+        // Получаем файл
+            const file = this.files[0];
+        // Создаём объект для чтения файла
+            const reader = new FileReader();
+            reader.onload = function (event) {
+        // Показываем превью
+                targetImage.src = event.target.result;
+                targetImage.style.display = 'inline-block'
+
+                const img = new Image();
+                img.src = event.target.result;
+
+                img.onload = function() {
+                    compressAndSaveImage(img);
+                };
+            };
+            reader.readAsDataURL(file);
+        };
+    });
+
+    function compressAndSaveImage(img) {
+        // Сжимаем картинку с помощью canvas
+        const canvas = document.createElement("canvas");
+        // Прописываем контекст рисования для рисования 2d графики
+        const ctx = canvas.getContext("2d");
+
+        const maxWidth = 270; // Максимальная ширина
+        const maxHeight = 275; // Максимальная высота
+        let width = img.width;
+        let height = img.height;
+
+        // Сохраняем пропорции
+        if (width > maxWidth || height > maxHeight) {
+            const scale = Math.min(maxWidth / width, maxHeight / height);
+            width *= scale;
+            height *= scale;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Преобразуем в сжатый base64 (JPEG, 80% качества)
+        target.image = canvas.toDataURL("image/jpeg", 0.8);
+        targetImage.src = target.image;
+
+        // Сохраняем в local Storage
+        localStorage.setItem('targets', JSON.stringify(targets));
+    };
+
 
     // Вешаем слушателя события клик на кнопку Отмена
     // resetButton.addEventListener('click', () => {

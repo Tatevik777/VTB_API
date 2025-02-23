@@ -62,9 +62,9 @@ function renderTargets() {
 
     sortedTargets.forEach(target => {
     // Проверяем, нет ли уже такой цели в контейнере
-        // if (!document.querySelector(`[data-id="${target.id}"]`)) {
+        if (!document.querySelector(`[data-id="${target.id}"]`)) {
             addTargetToDOM(target);
-        // }
+        }
     });
 }
 
