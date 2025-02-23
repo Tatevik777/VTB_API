@@ -216,6 +216,13 @@ button {
 }
 
 // Страница созданных целей
+.no-targets-message {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  font-size: x-large;
+}
+
 .target__wrapper {
   // display: flex;
   // padding: 30px;

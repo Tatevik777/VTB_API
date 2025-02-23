@@ -60,19 +60,33 @@ function renderTargets() {
     const targetsContainer = document.getElementById("targetsContainer");
     targetsContainer.innerHTML = ''; 
 
-    sortedTargets.forEach(target => {
+    if (sortedTargets.length === 0) {
+        const noTargetsMessage = document.createElement('p');
+        noTargetsMessage.classList.add('no-targets-message');
+        noTargetsMessage.textContent = 'Целей пока нет';
+        targetsContainer.appendChild(noTargetsMessage);
+    } else {
+        sortedTargets.forEach(target => {
     // Проверяем, нет ли уже такой цели в контейнере
-        if (!document.querySelector(`[data-id="${target.id}"]`)) {
-            addTargetToDOM(target);
-        }
-    });
+            if (!document.querySelector(`[data-id="${target.id}"]`)) {
+    // Передаем функции добавления цели в ДОМ не только цель, но и id супер приоритетной цели, иначе не работает
+                addTargetToDOM(target, superPriorityId); 
+            }
+        });
+    }
+
 }
 
-function addTargetToDOM(target) {
+function addTargetToDOM(target, superPriorityId) {
     // const targetsContainer = document.getElementById("targetsContainer");
     const targetElement = document.createElement("div");
     targetElement.classList.add("target__items-item");
     targetElement.setAttribute("data-id", target.id);
+
+    // Устанавливаем голубой бордер для суперприоритетной цели
+    if (Number(target.id) === Number(superPriorityId)) {
+        targetElement.style.border = '2px solid rgba(0, 159, 223, 1)';
+    }
 
     // Вычисляем процент прогресса
     const progressPercent = Math.min((target.progress / target.amount) * 100, 100);

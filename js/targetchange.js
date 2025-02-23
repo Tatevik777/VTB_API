@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Меняем кнопку Редактировать на кнопку Сохранить
             editButton.textContent = 'Сохранить';
             resetButton.style.display = 'inline-block';
+
         } else {
             const newTitle = targetTitleInput.value.trim();
             const newSum = targetSumInput.value.trim();
@@ -265,12 +266,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Сохраняем изменения в массиве в localStorage
-            const targetIndex = targets.findIndex(t => t.id == targetId)
-            if (targetIndex !== -1) {
-                targets[targetIndex] = target;
+            // const targetIndex = targets.findIndex(t => t.id == targetId)
+            // if (targetIndex !== -1) {
+            //     targets[targetIndex] = target;
                 
-                localStorage.setItem('targets', JSON.stringify(targets));
-            }
+            //     localStorage.setItem('targets', JSON.stringify(targets));
+            // }
+            saveToLocalStorage();
 
 
     // Выходим из режима редактирования, скрываем инпуты
@@ -293,9 +295,32 @@ document.addEventListener('DOMContentLoaded', function () {
             resetButton.style.display = 'none';
     // Обновляем прогресс-бар
             updateProgressBar();
+
         }
     // Отключаем режим редактирования, используем логическое отрицание. Во время редактирования было true, станет опять false
         isEditing = !isEditing
+    });
+
+    addAmountBtn.addEventListener('click', () => {
+    // Получаем сумму из инпута
+        const addedAmount = addAmountInput.value.trim();
+    // Проверяем введённую сумму
+        const deposit = parseFloat(addedAmount);
+        if (isNaN(deposit) || deposit <= 0) {
+            alert('Введите корректную сумму');
+            return
+        }
+        target.progress += deposit;
+
+        
+
+        saveToLocalStorage();
+
+        updateProgressBar();
+
+        addAmountInput.value = '';
+
+
     });
 
 
@@ -350,6 +375,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Сохраняем в local Storage
         localStorage.setItem('targets', JSON.stringify(targets));
+    };
+
+    function saveToLocalStorage() {
+        const targetIndex = targets.findIndex(t => t.id == targetId)
+        if (targetIndex !== -1) {
+            targets[targetIndex] = target;
+            
+            localStorage.setItem('targets', JSON.stringify(targets));
+        }
     };
 
 
