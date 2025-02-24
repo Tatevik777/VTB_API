@@ -86,17 +86,17 @@ function addTargetToDOM(target) {
             </div>
         </div>
         <div class="target__items-item__bottom">
-            <div class="progress-text">
-                <span class="progress-label">Прогресс цели:</span>
-                <span class="progress-value">${target.progress}</span>
-                <span class="progress-preposition">из</span>
-                <span class="progress-total">${target.amount}</span>
-            </div>
-        <div class="progress-bar__wrapper">
-            <div class="progress-bar" style="width: ${progressPercent}%; background-color: ${progressColor};"><p>${progressPercentRound}%</p></div>
+        <div class="progress-text">
+            <span class="progress-label">Прогресс цели:</span>
+            <span class="progress-value">${target.progress}</span>
+            <span class="progress-preposition">из</span>
+            <span class="progress-total">${target.amount}</span>
         </div>
-        
+    <div class="progress-bar__wrapper">
+        <div class="progress-bar" style="width: ${progressPercent}%; background-color: ${progressColor};"><p>${progressPercentRound}%</p></div>
     </div>
+    
+</div>
     `;
 
     targetsContainer.appendChild(targetElement);

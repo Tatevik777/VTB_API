@@ -564,6 +564,8 @@ button {
     height: 282px;
     inset-block-start: calc(50% - 141px);
   }
+
+} 
 //главная страница
 .goals__info__wrapper{
   display: flex;
@@ -573,11 +575,9 @@ button {
   background-color:$bg-white ;
   width: 410;
   height: 200;
-  top: 30px;
+  top: 20px;
   left: 25px;
   
-}
-
 }
 .main__wrapper{
   display: flex;
@@ -587,23 +587,19 @@ button {
   position: fixed;
   left: 160px;
   top: 30px;
-  bottom: 30px;
+  bottom: 20px;
 }
 .greeting__wrapper{
   display: flex;
   flex-direction: column;
-  gap:30px ;
-  
+  gap:20px; 
 }
-
 .greeting__wrapper__top{
   display: flex;
   background-color:$bg-white;  
   align-items: center; 
   border-radius:10px;
- 
 }
-
   .greeting__wrapper__top-text{
   display: flex;
   flex-direction: column;
@@ -620,6 +616,16 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    
   }
+  .greeting_wrapper_body{
+    background-color:$bg-white; 
+    color: $accent-dark;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius:10px;
+   padding:20px;
+  }
+  .greeting_items{
+
+}
 //главная страница

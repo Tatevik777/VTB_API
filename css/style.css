@@ -565,17 +565,19 @@ button {
     height: 282px;
     inset-block-start: calc(50% - 141px);
   }
-  .goals__info__wrapper {
-    display: flex;
-  }
-  .greeting {
-    background-color: rgb(255, 255, 255);
-    width: 410;
-    height: 200;
-    top: 30px;
-    left: 25px;
-  }
 }
+.goals__info__wrapper {
+  display: flex;
+}
+
+.greeting {
+  background-color: rgb(255, 255, 255);
+  width: 410;
+  height: 200;
+  top: 20px;
+  left: 25px;
+}
+
 .main__wrapper {
   display: flex;
   flex: 1;
@@ -584,13 +586,13 @@ button {
   position: fixed;
   left: 160px;
   top: 30px;
-  bottom: 30px;
+  bottom: 20px;
 }
 
 .greeting__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .greeting__wrapper__top {
@@ -617,4 +619,13 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: start;
+}
+
+.greeting_wrapper_body {
+  background-color: rgb(255, 255, 255);
+  color: rgb(10, 41, 115);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 20px;
 }
