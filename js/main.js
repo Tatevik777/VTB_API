@@ -100,3 +100,8 @@ greetingItemsContainer.appendChild(targetElement);
         window.location.href = './targetchange.html'
     })
 };
+
+
+
+
+

@@ -625,13 +625,12 @@ button {
     border-radius:10px;
    padding:20px;
   }
-  .greeting__items-item__top-title{
-    color:$accent-light;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font: weight 1px;;
- }
-
+.greeting_items-item{
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  
+}
 
 
 //главная страница
