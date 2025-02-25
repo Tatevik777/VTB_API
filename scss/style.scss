@@ -667,41 +667,6 @@ body {
   border: 4px solid $accent-light;
 }
 
-@media screen and (max-width: 1840px) {
-  .dot {
-    display: inline-block;
-  }
-
-  .help__gallery__card {
-    flex: 1 1 48%;
-  }
-
-  .help__gallery__dots {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-  }
-}
-
-@media screen and (max-width: 1550px) {
-  .help__gallery__card {
-    flex: 1 1 70%;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .help__gallery__card {
-    flex: 1 1 80%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .help__gallery__card {
-    flex: 1 1 100%;
-  }
-}
-
 //Конец страницы "Помощь"
 
 // Страница созданных целей
@@ -972,5 +937,41 @@ body {
   .authorization__wrapper {
     height: 282px;
     inset-block-start: calc(50% - 141px);
+  }
+}
+
+//Для страницы "Помощь"
+@media screen and (max-width: 1840px) {
+  .dot {
+    display: inline-block;
+  }
+
+  .help__gallery__card {
+    flex: 1 1 48%;
+  }
+
+  .help__gallery__dots {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .help__gallery__card {
+    flex: 1 1 70%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .help__gallery__card {
+    flex: 1 1 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .help__gallery__card {
+    flex: 1 1 100%;
   }
 }
