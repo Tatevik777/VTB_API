@@ -94,8 +94,8 @@ function saveGoal() {
 // Для Саши. Саш, пожалуйста, поменяй последние строчки на эти. Это очень важно для моей страницы
     // const priorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
     // const priorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
-    const priorityTime = priorityTimeSelect.value;
-    const priorityLevel = priorityLevelSelect.value;
+    const priorityTime = priorityTimeSelect.value || null;
+    const priorityLevel = priorityLevelSelect.value || null;
 
     if (!targetName || !targetAmount) {
         alert("Введите название и сумму цели!");

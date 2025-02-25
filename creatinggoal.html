@@ -259,12 +259,11 @@
                     id="priorityLevel"
                     type="text"
                     name="priorityLevel"
-                    required
                   >
                     <option hidden value="">Выберите приоритет</option>
-                    <option>Высокий</option>
-                    <option>Средний</option>
-                    <option>Низкий</option>
+                    <option value="high">Высокий</option>
+                    <option value="average">Средний</option>
+                    <option value="low">Низкий</option>
                   </select>
 
                   <label class="creatingGoal__inputs__label" for="priorityTime"
@@ -275,11 +274,10 @@
                     id="priorityTime"
                     type="text"
                     name="priorityTime"
-                    required
                   >
                     <option hidden value="">Приоритет по времени</option>
-                    <option>Краткосрочная</option>
-                    <option>Долгосрочная</option>
+                    <option value="shortTerm">Краткосрочная</option>
+                    <option value="longTerm">Долгосрочная</option>
                   </select>
 
                   <label class="creatingGoal__inputs__label" for="startDate"

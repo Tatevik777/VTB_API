@@ -83,10 +83,22 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('endDateInput').min = today;
     }
 
-    function getSelectedText(selectElement) {
-        return selectElement.options[selectElement.selectedIndex]?.text || 'Не указан';
-    }
+    
+    function getPriorityText(type, value) {
+        const priorityOptions = {
+            priorityLevel: {
+                high: "Высокий",
+                average: "Средний",
+                low: "Низкий"
+            },
+            priorityTime: {
+                shortTerm: "Краткосрочная",
+                longTerm: "Долгосрочная"
+            }
+        };
 
+        return priorityOptions[type]?.[value] || 'Не указан';
+    }
 
     // Заполняем данными страницу цели, а также заполняем этими же данными инпуты, которые откроются при редактировании
     targetTitle.textContent = target.name;
@@ -95,13 +107,13 @@ document.addEventListener('DOMContentLoaded', function () {
     targetSumInput.value = target.amount;
     // priorityLevel.textContent = target.priorityLevel || 'Не указан';
 
-    priorityLevelSelect.value = target.priorityLevel || 'Не указан';
-    priorityLevel.textContent = getSelectedText(priorityLevelSelect);
+    priorityLevelSelect.value = target.priorityLevel || '';
+    priorityLevel.textContent = getPriorityText('priorityLevel', target.priorityLevel);
 
     // priorityTime.textContent = target.priorityTime || 'Не указан';
 
-    priorityTime.textContent = getSelectedText(priorityTimeSelect);
-    priorityTimeSelect.value = target.priorityTime || 'Не указан';
+    priorityTime.textContent = getPriorityText('priorityTime', target.priorityTime);
+    priorityTimeSelect.value = target.priorityTime || '';
 
 
     startDate.textContent = formatDate(target.startDate);
@@ -168,13 +180,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const newSum = targetSumInput.value.trim();
             const newStartDate = startDateInput.value;
             const newEndDate = endDateInput.value;
-            const newPriorityLevel = priorityLevelSelect.value !== 'Не указан' ? priorityLevelSelect.value : null;
-            const newPriorityTime = priorityTimeSelect.value !== 'Не указан' ? priorityTimeSelect.value : null;
+            const newPriorityLevel = priorityLevelSelect.value || null;
+            const newPriorityTime = priorityTimeSelect.value || null;
             // const newPriorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
             // const newPriorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
 
-            const newPriorityLevelText = getSelectedText(priorityLevelSelect);
-            const newPriorityTimeText = getSelectedText(priorityTimeSelect);
+            const newPriorityLevelText = getPriorityText('priorityLevel', newPriorityLevel);
+            const newPriorityTimeText = getPriorityText('priorityTime', newPriorityTime);
 
     // Валидация базовая введённых данных
             if(!newTitle) {

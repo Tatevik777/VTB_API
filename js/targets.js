@@ -34,9 +34,9 @@ function renderTargets() {
     const priorityLevel = settings.priorityLevel;
     const priorityTime = settings.priorityTime;
 
-    console.log(superPriorityId);
-    console.log(priorityLevel);
-    console.log(priorityTime);
+    // console.log(superPriorityId);
+    // console.log(priorityLevel);
+    // console.log(priorityTime);
 
 
     const superPriorityTarget = targets.find(target => Number(target.id) === Number(superPriorityId));
@@ -46,13 +46,13 @@ function renderTargets() {
     const sortedTargets = [];
 
     if (superPriorityTarget) {
-        console.log(superPriorityTarget);
+        // console.log(superPriorityTarget);
         sortedTargets.push(superPriorityTarget);
     }
 
-    console.log(priorityTargets)
+    // console.log(priorityTargets)
     sortedTargets.push(...priorityTargets);
-    console.log(otherTargets)
+    // console.log(otherTargets)
     sortedTargets.push(...otherTargets);
 
     console.log(sortedTargets);
