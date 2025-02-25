@@ -616,20 +616,29 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    position: fixed;
   }
   .greeting_wrapper_body{
+    display: flex;
+    flex-direction: column;
     background-color:$bg-white; 
     color: $accent-dark;
     font-weight: bold;
     font-size: 20px;
     border-radius:10px;
-   padding:20px;
+    padding:20px;
   }
-.greeting_items-item{
+.greeting_container_body{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.charts_wrapper{
   display: flex;
   flex-direction: column;
-  justify-self: start;
-  
 }
 
 

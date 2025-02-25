@@ -101,7 +101,66 @@ greetingItemsContainer.appendChild(targetElement);
     })
 };
 
+function targetToChart(){
+  const ctx1 = document.getElementById('chart1').getContext('2d');
+  const ctx2 = document.getElementById('chart2').getContext('2d');
 
+  const data1 = {
+    type: 'line',
+    labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'],
+    datasets: [{
+        label: 'Всего средств',
+        data: [20, 50, 80, 40, 100, 120],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        fill: true,
+        tension: 0.4
+    }]
+  };
+
+  const data2 = {
+      labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'],
+      datasets: [{
+          label: 'Всего целей',
+          data: [5, 15, 10, 25, 30, 50],
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          fill: true,
+          tension: 0.4
+      }]
+  };
+
+  const config1 = {
+      type: 'line',
+      data: data1,
+      options: {
+          responsive: true,
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  };
+
+  const config2 = {
+      type: 'line',
+      data: data2,
+      options: {
+          responsive: true,
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  };
+
+  const myChart1 = new Chart(ctx1, config1);
+  const myChart2 = new Chart(ctx2, config2);
+
+};
+targetToChart();
 
 
 
