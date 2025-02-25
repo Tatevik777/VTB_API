@@ -4,7 +4,7 @@
 
 html,
 body {
-  overflow: hidden;
+  overflow: auto;
 }
 
 body {
@@ -164,7 +164,9 @@ body {
 }
 
 //Страница "Настройки"
-.settings__main-wrapper {
+.settings__main-wrapper,
+.creatingGoal__main-wrapper,
+.help__main-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -402,18 +404,9 @@ body {
 .target__wrapper__right {
   justify-content: flex-end;
   flex-wrap: wrap;
-}
-
-.creatingGoal__main-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: $bg-white;
-  width: 93%;
-  border-radius: 10px;
-  margin-left: 25px;
-  padding: 38px 80px;
-  justify-content: space-between;
+  margin: 92px 105px;
+  // overflow-y: auto;
+  // max-height: calc(100vh - 60px);
 }
 
 .creatingGoal__inputs-container {
@@ -579,6 +572,137 @@ body {
 }
 
 //Конец страницы "Создание цели"
+
+//Страница "Помощь"
+.target__wrapper__help {
+  display: flex;
+  height: 100vh;
+  padding: 30px 20px;
+  gap: 20px;
+}
+
+.help__cancel {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  width: 100%;
+  justify-content: center;
+}
+
+.help__cancel__img {
+  cursor: pointer;
+}
+
+.help__gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0px;
+  border: none;
+  width: 100%;
+}
+
+.help__gallery__card {
+  padding: 146px 48px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid $grey;
+  max-width: 330px;
+  margin-bottom: 20px;
+  height: 674px;
+}
+
+.help__card__container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  max-width: 234px;
+}
+
+.help__card__title {
+  color: $accent-dark;
+  font-family: $font-family;
+  font-weight: 900;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.help__card__img {
+  width: 234px;
+}
+
+.help__card__img {
+  object-fit: cover;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.help__card__paragraph {
+  color: $text;
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.help__gallery__dots {
+  display: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin: 0px 7px;
+  border-radius: 50%;
+  background-color: $grey;
+  cursor: pointer;
+  display: none;
+}
+
+.dot.active {
+  width: 16px;
+  height: 16px;
+  border: 4px solid $accent-light;
+}
+
+@media screen and (max-width: 1840px) {
+  .dot {
+    display: inline-block;
+  }
+
+  .help__gallery__card {
+    flex: 1 1 48%;
+  }
+
+  .help__gallery__dots {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .help__gallery__card {
+    flex: 1 1 70%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .help__gallery__card {
+    flex: 1 1 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .help__gallery__card {
+    flex: 1 1 100%;
+  }
+}
+
+//Конец страницы "Помощь"
 
 // Страница созданных целей
 .target__wrapper {
