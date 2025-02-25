@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Подключение нашего листа со стилями -->
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>VTB</title>
+    <title>Создание цели</title>
+    <meta name="keywords" content="создание цели" />
+    <meta name="description" content="Создание цели." />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <section class="main">
-      <div class="main__wrapper">
+    <section class="target">
+      <div class="target__wrapper target__wrapper__right">
         <div class="navbar">
           <ul class="navbar__top">
             <li>
@@ -26,10 +27,7 @@
               />
             </li>
             <li>
-              <div
-                class="icon-wrapper add-icon-wrapper"
-                data-url="creatinggoal.html"
-              >
+              <div class="icon-wrapper add-icon-wrapper" data-url="">
                 <svg
                   class="add-icon"
                   viewBox="0 0 50 50"
@@ -194,28 +192,154 @@
             </li>
           </ul>
         </div>
-        <div class="greeting__wrapper">
-          <div class="greeting__wrapper__top">
-            <div class="greeting__wrapper__top-text">
-              <span>Привет</span>
-              <span>Борис!</span>
+        <section class="creatingGoal__main-wrapper">
+          <div class="creatingGoal__inputs-container">
+            <div class="creatingGoal__inputs-container__buttons">
+              <button
+                class="creatingGoal__buttons__goBackButton"
+                id="backButton"
+              >
+                <img
+                  class="creatingGoal__buttons_goBackButton__icon"
+                  src="./assets/images/icons/Chevron Left.svg"
+                  alt="Кнопка «Назад»"
+                />
+                Назад
+              </button>
+              <div class="creatingGoal__buttons__subcontainer">
+                <button
+                  type="submit"
+                  class="creatingGoal__buttons_saveButton"
+                  id="saveGoalBtn"
+                >
+                  Сохранить
+                </button>
+                <button
+                  type="reset"
+                  class="creatingGoal__buttons_cancelButton"
+                  id="cancelGoalBtn"
+                >
+                  Отмена
+                </button>
+              </div>
             </div>
-            <div class="greeting__wrapper__top-image">
-              <img src="./assets/images/icons/Group (1).png" alt="" />
+            <div class="creatingGoal__inputs-container__inputs">
+              <div class="creatingGoal__inputs__subcontainer__textInputs">
+                <form id="targetForm">
+                  <label class="creatingGoal__inputs__label" for="targetName"
+                    >Название цели</label
+                  >
+                  <input
+                    class="creatingGoal__inputs__inputItem"
+                    type="text"
+                    id="targetName"
+                    name="targetName"
+                    placeholder="Введите название цели"
+                    required
+                  />
+
+                  <label class="creatingGoal__inputs__label" for="targetAmount"
+                    >Сумма, которую хотите накопить</label
+                  >
+                  <input
+                    class="creatingGoal__inputs__inputItem"
+                    type="number"
+                    id="targetAmount"
+                    name="targetAmount"
+                    min="0"
+                    placeholder="Введите сумму"
+                    required
+                  />
+
+                  <label class="creatingGoal__inputs__label" for="priorityLevel"
+                    >Приоритет цели</label
+                  >
+                  <select
+                    class="creatingGoal__inputs__inputItem"
+                    id="priorityLevel"
+                    type="text"
+                    name="priorityLevel"
+                    required
+                  >
+                    <option hidden value="">Выберите приоритет</option>
+                    <option>Высокий</option>
+                    <option>Средний</option>
+                    <option>Низкий</option>
+                  </select>
+
+                  <label class="creatingGoal__inputs__label" for="priorityTime"
+                    >Приоритет цели по времени</label
+                  >
+                  <select
+                    class="creatingGoal__inputs__inputItem"
+                    id="priorityTime"
+                    type="text"
+                    name="priorityTime"
+                    required
+                  >
+                    <option hidden value="">Приоритет по времени</option>
+                    <option>Краткосрочная</option>
+                    <option>Долгосрочная</option>
+                  </select>
+
+                  <label class="creatingGoal__inputs__label" for="startDate"
+                    >Дата начала накопления</label
+                  >
+                  <input
+                    class="creatingGoal__inputs__inputItem"
+                    type="date"
+                    id="startDate"
+                    name="startDate"
+                    placeholder="Выберите дату"
+                    required
+                  />
+
+                  <label class="creatingGoal__inputs__label" for="endDate"
+                    >Дата окончания накопления</label
+                  >
+                  <input
+                    class="creatingGoal__inputs__inputItem"
+                    type="date"
+                    id="endDate"
+                    name="endDate"
+                    placeholder="Выберите дату"
+                    required
+                  />
+                </form>
+              </div>
+
+              <div class="creatingGoal__inputs__subcontainer__textInputs">
+                <label
+                  class="creatingGoal__inputs__imageDownloadContainer"
+                  for="targetImage"
+                >
+                  <input
+                    type="file"
+                    class="creatingGoal__inputs__imageDownload"
+                    id="targetImage"
+                    name="targetImage"
+                    accept="image/*"
+                  />
+                  <img
+                    id="previewImage"
+                    class="creatingGoal__inputs__imageDownloadContainer__img"
+                    src="./assets/images/img/default-image.png"
+                  />
+                </label>
+              </div>
             </div>
           </div>
 
-          <div class="greeting_wrapper_body">
-            <h2>Важные цели</h2>
-
-            <div class="greeting_wrapper_body_items" id="greeting__items"></div>
+          <div class="creatingGoal__img-container">
+            <img
+              class="creatingGoal__img-container__img"
+              src="/assets/images/img/background.png"
+              alt="Достигайте целей с ВТБ!"
+            />
           </div>
-
-          <div class="charts_wrapper"></div>
-        </div>
+        </section>
       </div>
     </section>
-
-    <script src="./js/main.js"></script>
+    <script src="/js/creatinggoal.js"></script>
   </body>
 </html>

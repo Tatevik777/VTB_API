@@ -26,7 +26,10 @@
               />
             </li>
             <li>
-              <div class="icon-wrapper add-icon-wrapper" data-url="test.html">
+              <div
+                class="icon-wrapper add-icon-wrapper"
+                data-url="creatinggoal.html"
+              >
                 <svg
                   class="add-icon"
                   viewBox="0 0 50 50"
@@ -192,7 +195,6 @@
           <div class="editing-target">
             <div class="editing-target__buttons-bar">
               <a
-                href="/targets.html"
                 class="editing-target__buttons-bar__return-link"
                 id="backButton"
               >
@@ -204,6 +206,7 @@
                 <button class="btn reset-button" style="display: none">
                   Отмена
                 </button>
+                <button class="btn delete-button">Удалить</button>
               </div>
             </div>
             <div class="editing-target__main">
@@ -248,9 +251,6 @@
                       name="priorityLevelSelect"
                       style="display: none"
                     >
-                      <option value="" disabled selected>
-                        Выберите приоритет
-                      </option>
                       <option value="high">Высокий</option>
                       <option value="average">Средний</option>
                       <option value="low">Низкий</option>
@@ -301,6 +301,10 @@
                     Сумма, которую хотите внести сейчас:
                   </label>
                   <input id="addAmount" type="text" />
+                  <p
+                    id="depositWarningMessage"
+                    style="color: red; display: none"
+                  ></p>
                   <button class="add-btn" type="button" id="addAmountBtn">
                     Пополнить
                   </button>

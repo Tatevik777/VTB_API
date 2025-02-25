@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // })
     });
 
+    const backButton = document.getElementById('backButton');
+    backButton.addEventListener('click', () => {
+        window.history.back();
+    });
     
     const targetId = localStorage.getItem('editingTargetId'); // Получаем ID цели
     console.log('Цель', targetId)
@@ -42,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const priorityLevel = document.getElementById("priorityLevel");
     const priorityLevelSelect = document.getElementById('priorityLevelSelect');
-    const currentPriorityLevelText = document.getElementById('currentPriorityLevelText');
+
 
     const priorityTime = document.getElementById('priorityTime');
     const priorityTimeSelect = document.getElementById('priorityTimeSelect');
@@ -59,8 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const progressBar = document.querySelector(".progress-bar__wrapper");
     const addAmountInput = document.getElementById("addAmount");
     const addAmountBtn = document.getElementById("addAmountBtn");
+    const warningMessage = document.getElementById('depositWarningMessage');
     const editButton = document.querySelector(".edit-button");
     const resetButton = document.querySelector(".reset-button");
+    const deleteButton = document.querySelector('.delete-button');
 
     function formatDate(dateString) {
         if(!dateString) return 'Не указана';
@@ -71,16 +77,33 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${day}.${month}.${year}`;
     }
 
+    function setMinDate() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('startDateInput').min = today;
+        document.getElementById('endDateInput').min = today;
+    }
+
+    function getSelectedText(selectElement) {
+        return selectElement.options[selectElement.selectedIndex]?.text || 'Не указан';
+    }
+
 
     // Заполняем данными страницу цели, а также заполняем этими же данными инпуты, которые откроются при редактировании
     targetTitle.textContent = target.name;
     targetTitleInput.value = target.name;
     targetSum.textContent = `${target.amount} ₽;`
     targetSumInput.value = target.amount;
-    priorityLevel.textContent = target.priorityLevelText || 'Не указан';
+    // priorityLevel.textContent = target.priorityLevel || 'Не указан';
+
     priorityLevelSelect.value = target.priorityLevel || 'Не указан';
-    priorityTime.textContent = target.priorityTimeText || 'Не указан';
+    priorityLevel.textContent = getSelectedText(priorityLevelSelect);
+
+    // priorityTime.textContent = target.priorityTime || 'Не указан';
+
+    priorityTime.textContent = getSelectedText(priorityTimeSelect);
     priorityTimeSelect.value = target.priorityTime || 'Не указан';
+
+
     startDate.textContent = formatDate(target.startDate);
     startDateInput.value = target.startDate;
     endDate.textContent = formatDate(target.endDate);
@@ -105,6 +128,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Вешаем слушателя события клик на кнопку редактировать
     editButton.addEventListener('click', () => {
         if (!isEditing) {
+            setMinDate();
+    // Отключаем кнопку пополнения в режиме редактирования цели
+            addAmountBtn.disabled = true;
+            addAmountBtn.classList.add('disabled');
+
     // Выключаем статичные поля, подключаем динамические инпуты для введения отредактированной информации
             targetTitle.style.display = 'none';
             targetTitleInput.style.display = 'inline-block';
@@ -120,36 +148,58 @@ document.addEventListener('DOMContentLoaded', function () {
             endDate.style.display = 'none';
             endDateInput.style.display = 'inline-block';
             progressBar.style.display = 'none';
-            targetImage.style.display = 'none';
+            targetImage.style.display = 'inline-block';
+            targetImage.src = target.image;
             targetImageInput.style.display = 'inline-block';
 
     // Меняем кнопку Редактировать на кнопку Сохранить
             editButton.textContent = 'Сохранить';
             resetButton.style.display = 'inline-block';
+            deleteButton.style.display = 'none';
+
 
         } else {
+
+    // Включаем кнопку пополнения
+            addAmountBtn.disabled = false;
+            addAmountBtn.classList.remove('disabled');
+
             const newTitle = targetTitleInput.value.trim();
             const newSum = targetSumInput.value.trim();
             const newStartDate = startDateInput.value;
             const newEndDate = endDateInput.value;
-            const newPriorityLevel = priorityLevelSelect.value;
-            const newPriorityTime = priorityTimeSelect.value;
-            const newPriorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
-            const newPriorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
+            const newPriorityLevel = priorityLevelSelect.value !== 'Не указан' ? priorityLevelSelect.value : null;
+            const newPriorityTime = priorityTimeSelect.value !== 'Не указан' ? priorityTimeSelect.value : null;
+            // const newPriorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
+            // const newPriorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
+
+            const newPriorityLevelText = getSelectedText(priorityLevelSelect);
+            const newPriorityTimeText = getSelectedText(priorityTimeSelect);
+
     // Валидация базовая введённых данных
             if(!newTitle) {
                 alert('Введите название цели!');
                 return;
             }
             if(!newSum || isNaN(newSum) || Number(newSum) <= 0) {
-                alert('Сумма цели должна быть числом больше 0!')
+                alert('Сумма цели должна быть числом больше 0!');
                 return;
             }
+            if(newStartDate && newEndDate && newEndDate < newStartDate) {
+                alert('Дата завершения не может быть раньше даты начала!');
+                return;
+            }
+
+
+            // const newPriorityLevelText = priorityLevelSelect.options[priorityLevelSelect.selectedIndex].text;
+            // const newPriorityTimeText = priorityTimeSelect.options[priorityTimeSelect.selectedIndex].text;
     // Обновляем данные при клике на Сохранить
             targetTitle.textContent = newTitle;
             targetSum.textContent = `${newSum}  ₽`;
+            // priorityLevel.textContent = newPriorityLevel || 'Не указан';
             priorityLevel.textContent = newPriorityLevelText;
             priorityTime.textContent = newPriorityTimeText;
+            // priorityTime.textContent = newPriorityTime || 'Не указан';
             startDate.textContent = formatDate(newStartDate);
             endDate.textContent = formatDate(newEndDate);
 
@@ -159,119 +209,11 @@ document.addEventListener('DOMContentLoaded', function () {
             target.startDate = newStartDate;
             target.endDate = newEndDate;
             target.priorityTime = newPriorityTime;
-            target.priorityTimeText = newPriorityTimeText;
+            // target.priorityTimeText = newPriorityTimeText;
             target.priorityLevel = newPriorityLevel;
-            target.priorityLevelText = newPriorityLevelText;
-
-    // Меняем картинку, выбираем новый файл 
-
-        // if (targetImageInput.files.length > 0) {
-        //     const file = targetImageInput.files[0];
-        //     const reader = new FileReader();
-
-        //     reader.onload = function (event) {
-        //         const img = new Image();
-        //         img.src = event.target.result;
-
-        //         img.onload = function () {
-        //         // Сжимаем картинку с помощью canvas
-        //             const canvas = document.createElement("canvas");
-        //         // Прописываем контекст рисования для рисования 2d графики
-        //             const ctx = canvas.getContext("2d");
-
-        //             const maxWidth = 270; // Максимальная ширина
-        //             const maxHeight = 275; // Максимальная высота
-        //             let width = img.width;
-        //             let height = img.height;
-
-        //         // Сохраняем пропорции
-        //             if (width > maxWidth || height > maxHeight) {
-        //                 const scale = Math.min(maxWidth / width, maxHeight / height);
-        //                 width *= scale;
-        //                 height *= scale;
-        //             }
-
-        //             canvas.width = width;
-        //             canvas.height = height;
-        //             ctx.drawImage(img, 0, 0, width, height);
-
-        //         // Преобразуем в сжатый base64 (JPEG, 80% качества)
-        //             target.image = canvas.toDataURL("image/jpeg", 0.8);
-        //             targetImage.src = target.image;
-
-        //         // Сохраняем в local Storage
-        //         localStorage.setItem('targets', JSON.stringify(targets));
-
-        //         };
-        //     };
-        //     reader.readAsDataURL(file);
-        // } else {
-        //     localStorage.setItem('targets', JSON.stringify(targets));
-        // };
-        
+            // target.priorityLevelText = newPriorityLevelText;
 
 
-        // targetImageInput.addEventListener('change', function () {
-        //     // Проверяем выбран ли был файл
-        //     if (this.files?.[0]) {
-        //     // Получаем файл
-        //         const file = this.files[0];
-        //     // Создаём объект для чтения файла
-        //         const reader = new FileReader();
-        //         reader.onload = function (event) {
-        //     // Показываем превью
-        //             targetImage.src = event.target.result;
-        //             targetImage.style.display = 'inline-block'
-
-        //             const img = new Image();
-        //             img.src = event.target.result;
-
-        //             img.onload = function() {
-        //                 compressAndSaveImage(img);
-        //             };
-        //         };
-        //         reader.readAsDataURL(file);
-        //     };
-        // });
-
-        // function compressAndSaveImage(img) {
-        //     // Сжимаем картинку с помощью canvas
-        //     const canvas = document.createElement("canvas");
-        //     // Прописываем контекст рисования для рисования 2d графики
-        //     const ctx = canvas.getContext("2d");
-
-        //     const maxWidth = 270; // Максимальная ширина
-        //     const maxHeight = 275; // Максимальная высота
-        //     let width = img.width;
-        //     let height = img.height;
-
-        //     // Сохраняем пропорции
-        //     if (width > maxWidth || height > maxHeight) {
-        //         const scale = Math.min(maxWidth / width, maxHeight / height);
-        //         width *= scale;
-        //         height *= scale;
-        //     }
-
-        //     canvas.width = width;
-        //     canvas.height = height;
-        //     ctx.drawImage(img, 0, 0, width, height);
-
-        //     // Преобразуем в сжатый base64 (JPEG, 80% качества)
-        //     target.image = canvas.toDataURL("image/jpeg", 0.8);
-        //     targetImage.src = target.image;
-
-        //     // Сохраняем в local Storage
-        //     localStorage.setItem('targets', JSON.stringify(targets));
-        // };
-
-
-    // Сохраняем изменения в массиве в localStorage
-            // const targetIndex = targets.findIndex(t => t.id == targetId)
-            // if (targetIndex !== -1) {
-            //     targets[targetIndex] = target;
-                
-            //     localStorage.setItem('targets', JSON.stringify(targets));
-            // }
             saveToLocalStorage();
 
 
@@ -293,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
             targetImage.style.display = "inline-block"
             editButton.textContent = 'Редактировать';
             resetButton.style.display = 'none';
+            deleteButton.style.display = 'inline-block';
     // Обновляем прогресс-бар
             updateProgressBar();
 
@@ -312,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         target.progress += deposit;
 
-        
+        alert('Цель успешно пополнена');
 
         saveToLocalStorage();
 
@@ -323,6 +266,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+    // Выводим сообщение-предупреждение при попытке пополнить цель до завершения её редактирования
+
+    addAmountInput.addEventListener('focus', function() {
+        if(isEditing === true) {
+            warningMessage.textContent = 'Сначала завершите редактирование цели';
+            warningMessage.style.display = 'block';
+
+            setTimeout(() => {
+                warningMessage.style.display = 'none';
+            }, 2000);
+
+            this.blur();
+        }
+    });
 
     targetImageInput.addEventListener('change', function () {
         // Проверяем выбран ли был файл
@@ -388,12 +345,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // Вешаем слушателя события клик на кнопку Отмена
-    // resetButton.addEventListener('click', () => {
+    resetButton.addEventListener('click', () => {
     // Отмена изменений
-        
+        isEditing = false;
+
+        targetTitle.style.display = 'inline-block';
+        targetTitleInput.style.display = 'none'
+        targetSum.style.display = 'inline-block';
+        targetSumInput.style.display = 'none';
+        priorityLevel.style.display = 'inline-block';
+        priorityLevelSelect.style.display = 'none';
+        priorityTime.style.display = 'inline-block';
+        priorityTimeSelect.style.display = 'none';
+        startDate.style.display = 'inline-block';
+        startDateInput.style.display = 'none';
+        endDate.style.display = 'inline-block';
+        endDateInput.style.display = 'none';
+        progressBar.style.display = 'inline-block';
+        targetImageInput.style.display = "none";
+        targetImage.style.display = "inline-block";
+
+        targetTitleInput.value = target.name;
+        targetSumInput.value = target.amount;
+        priorityLevelSelect.value = target.priorityLevel || 'Не указан';
+        priorityTimeSelect.value = target.priorityTime || 'Не указан';
+        startDateInput.value = target.startDate;
+        endDateInput.value = target.endDate;
+
+        addAmountBtn.disabled = false;
+        addAmountBtn.classList.remove('disabled');
+
+        editButton.textContent = 'Редактировать';
+        resetButton.style.display = 'none';
+        deleteButton.style.display = "inline-block";
 
 
-    // })
+    });
+
+    deleteButton.addEventListener('click', () => {
+    // Подтверждение перед удалением
+    const confirmCancel = confirm("Вы уверены, что хотите удалить цель? Данные будут удалены без возможности восстановления.");
+    if (!confirmCancel) return;
+
+    const targets = JSON.parse(localStorage.getItem('targets')) || [];
+    const targetId = localStorage.getItem('editingTargetId');
+    const updatedTargets = targets.filter(target => target.id !== Number(targetId));
+
+    localStorage.setItem('targets', JSON.stringify(updatedTargets));
+
+    alert('Цель успешно удалена');
+    window.location.href = 'targets.html'
+
+
+    });
 
 
 });
