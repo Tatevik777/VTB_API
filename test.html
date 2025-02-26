@@ -23,13 +23,27 @@
       <label for="endDate">Выберите дату окончания накопления:</label>
       <input type="date" id="endDate" />
 
-      <label for="initialDeposit"
+      <label for="priorityTime">Приоритет цели по времени:</label>
+      <select id="priorityTime" name="priorityTime">
+        <option value="shortTerm">Краткосрочный</option>
+        <option value="longTerm">Долгосрочный</option>
+      </select>
+
+      <label for="priorityLevel">Приоритет цели:</label>
+      <select id="priorityLevel" name="priorityLevel">
+        <option value="high">Высокий</option>
+        <option value="average">Средний</option>
+        <option value="low">Низкий</option>
+      </select>
+
+      <!-- <label for="initialDeposit"
         >Введите сумму, которую хотите внести сейчас:</label
       >
-      <input type="text" id="initialDeposit" />
+      <input type="text" id="initialDeposit" /> -->
 
       <button type="button" id="saveGoalBtn">Сохранить</button>
       <button type="reset" id="cancelGoalBtn">Отмена</button>
+      <button type="back" id="backButton">Назад</button>
     </form>
 
     <script src="./js/test.js"></script>
