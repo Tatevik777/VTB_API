@@ -103,13 +103,25 @@ greetingItemsContainer.appendChild(targetElement);
 
 function targetToChart(target){
   const ctx1 = document.getElementById('chart1').getContext('2d');
+
+  const currentDate=new Date();
+  console.log(currentDate)
+  const lastWeekDays=[];
+
+  for(let i =6;i>0; i--){
+    const day=new Date(currentDate);
+    day.setDate(currentDate.getDate()-i);
+    const formatedDate=`${day.getDate().toString().padStart(2,'0')}.${(day.getMonth()+1).toString().padStart(2,'0')}`;
+    lastWeekDays.push(formatedDate)
+  }
+
   const ctx2 = document.getElementById('chart2').getContext('2d');
   
 
   const fundsChart = new Chart(chart1, {
       type: 'line',
       data: {
-          labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'], // можно добавить текущую дату
+          labels: lastWeekDays, // можно добавить текущую дату
           datasets: [{
               label: 'Всего средств (тыс.)',
               data: [30, 50, 70, 120, 90, 110], // тут можно добавить переменную с количеством пополненных денег, котоая увеличивается или уменьшается при удалении цели 
@@ -132,7 +144,7 @@ function targetToChart(target){
   const goalsChart = new Chart(chart2, {
       type: 'line',
       data: {
-          labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'],
+          labels:lastWeekDays,
           datasets: [{
               label: 'Всего целей (шт.)',
               data: [20, 30, 25, 50, 45, 30],// тут можно добавить переменную с количеством целей, которая увеличивается или уменьшается при добавлении или удалении целей
