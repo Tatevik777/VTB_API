@@ -613,14 +613,29 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: start;
-   
+
     &-item__top-title{
       color:$accent-light;
-      margin-bottom: ;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      font-weight:500;
   }
   }
-  .greeting_wrapper_body_items{
-    gap:10px;
+  .target__items-item__top-link__wrapper{
+   margin-top: 20px;
+  }
+  .progress-bar__wrapper{
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .progress-info__label,
+  .progress-info__remaining {
+    font-weight:lighter;
+    color: $text;
+  }
+  .greeting-info__amount{
+    display: flex;
+    justify-content: space-between;
   }
   .greeting_wrapper_body{
     display: flex;
@@ -633,8 +648,7 @@ button {
     padding:20px;
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-width: none;
-   
+    scrollbar-width: none; 
   }
 .greeting_container_body{
   display: flex;
@@ -663,7 +677,4 @@ button {
   width: 90%;
   height: 50%;
 }
-
-
-
 //главная страница

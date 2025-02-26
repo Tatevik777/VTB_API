@@ -68,7 +68,7 @@ targetElement.innerHTML = `
       
             <div class="progress-bar" style="width: ${progressPercent}%; background-color: ${progressColor};"><p>${progressPercentRound}%</p></div>
         </div>   
-        <div class="progress-info__amount">
+        <div class="greeting-info__amount">
         <span class="progress-info__label">Осталось собрать:</span>
         <span class="progress-info__remaining">${remainingAmount} ₽</span>
 
