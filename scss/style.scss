@@ -569,15 +569,13 @@ button {
 //главная страница
 .goals__info__wrapper{
   display: flex;
-
 }
 .greeting{
   background-color:$bg-white ;
   width: 410;
   height: 200;
   top: 20px;
-  left: 25px;
-  
+  left: 25px; 
 }
 .main__wrapper{
   display: flex;
@@ -614,8 +612,13 @@ button {
   .greeting__items{
     display: flex;
     flex-direction: column;
-    justify-content: start; 
+    justify-content: start;
+
+    &-item__top-title{
+      color:$accent-light;
   }
+  }
+
   .greeting_wrapper_body{
     display: flex;
     flex-direction: column;

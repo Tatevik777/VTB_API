@@ -620,6 +620,9 @@ button {
   flex-direction: column;
   justify-content: start;
 }
+.greeting__items-item__top-title {
+  color: rgb(0, 159, 223);
+}
 
 .greeting_wrapper_body {
   display: flex;
