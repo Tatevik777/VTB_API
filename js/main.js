@@ -36,6 +36,24 @@ document.addEventListener("DOMContentLoaded", function () {
 function renderTargets() {
   let targets = JSON.parse(localStorage.getItem("targets")) || [];
 
+  const settings=JSON.parse(localStorage.getItem('settings'))|| [];
+
+  const superPriorityId=settings.superPriorityId;
+  const priorityLevel=settings.priorityLevel;
+  const priorityTime=settings.priorityTime;
+
+  const superPriorityTargets=targets.find(target=> Number(target.id)===Number(superPriorityId));
+  const priorityTargets=targets.filter(target.priorityLevel === priorityLevel && target.priorityTime === priorityTime);
+
+  const sortedTargets = [];
+
+  if(superPriorityTargets){
+    sortedTargets.push(superPriorityTargets);
+  }
+ sortedTargets.push(...priorityTargets);
+ 
+ const greetingItemsContainer = document.getElementById("greeting__items");
+
   targets.forEach((target) => {
     // Проверяем, нет ли уже такой цели в контейнере
     if (!document.querySelector(`[data-id="${target.id}"]`)) {
@@ -78,21 +96,19 @@ targetElement.innerHTML = `
             height="16"
             viewBox="0 0 15 16"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
+            xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M6.02968 3.88318L9.43938 7.29287C9.8299 7.6834 9.8299 8.31656 9.43938 8.70709L6.02968 12.1168"
                 stroke="#292929"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-            />
+                />
         </svg>
     </div>
     </div>`;
 
 greetingItemsContainer.appendChild(targetElement);
-
 
     // Получаем элемент иконки редактирования цели внутри карточки цели
     const editIconWrapper = targetElement.querySelector('.target__items-item__top-link__wrapper');
@@ -118,7 +134,6 @@ function targetToChart(target){
   }
 
   const ctx2 = document.getElementById('chart2').getContext('2d');
-  
 
   const fundsChart = new Chart(chart1, {
       type: 'line',
@@ -164,8 +179,6 @@ function targetToChart(target){
           }
       }
   });
-  
-
 };
 targetToChart();
 
