@@ -624,6 +624,10 @@ button {
   color: rgb(0, 159, 223);
 }
 
+.greeting_wrapper_body_items {
+  gap: 10px;
+}
+
 .greeting_wrapper_body {
   display: flex;
   flex-direction: column;

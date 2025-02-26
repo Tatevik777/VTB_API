@@ -63,7 +63,9 @@ targetElement.innerHTML = `
        <div class="greeting__items-item__top">
        <h3 class="greeting__items-item__top-title">${target.name}</h3>
         </div>
+        <span class="progress-label">Прогресс цели:</span>
         <div class="progress-bar__wrapper">
+      
             <div class="progress-bar" style="width: ${progressPercent}%; background-color: ${progressColor};"><p>${progressPercentRound}%</p></div>
         </div>   
         <div class="progress-info__amount">

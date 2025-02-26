@@ -613,12 +613,15 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: start;
-
+   
     &-item__top-title{
       color:$accent-light;
+      margin-bottom: ;
   }
   }
-
+  .greeting_wrapper_body_items{
+    gap:10px;
+  }
   .greeting_wrapper_body{
     display: flex;
     flex-direction: column;
@@ -631,6 +634,7 @@ button {
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
+   
   }
 .greeting_container_body{
   display: flex;
