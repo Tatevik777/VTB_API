@@ -1,8 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const iconWrappers = document.querySelectorAll('.icon-wrapper');
+    iconWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function () {
+            const url = this.getAttribute('data-url');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+
+    const currentUrl = window.location.pathname.split('/').pop();
+    const navIcons = document.querySelectorAll('.common-icon-wrapper');
+    navIcons.forEach(icon => {
+        const iconUrl = icon.getAttribute('data-url');
+        console.log(iconUrl);
+        console.log(currentUrl);
+        if (iconUrl && currentUrl === iconUrl) {
+            icon.classList.add('active');
+        }
+    });
+
   loadTargets();
   addTargetNamesToDropdown();
   loadSettings();
-})
+});
 
 const superPriority = document.getElementById("superPriority");
 const goalName = document.getElementById("selectItem");

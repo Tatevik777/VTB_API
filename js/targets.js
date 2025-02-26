@@ -20,6 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    const userPhoto = document.getElementById('userPhoto');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    userPhoto.addEventListener('click', function (event) {
+        dropdownMenu.classList.toggle('visible'); 
+        event.stopPropagation();
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!userPhoto.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('visible');
+        }
+    });
+
     renderTargets() 
 });
 
@@ -77,6 +91,19 @@ function renderTargets() {
 
 }
 
+function formatAmount(amount) {
+    if (amount >= 1000) {
+        let result = amount / 1000;
+        if (result % 1 === 0) {
+            return result + ' тыс';
+        } else {
+            return result.toFixed(1) + ' тыс';
+        }
+    } else {
+        return amount.toString();
+    }
+};
+
 function addTargetToDOM(target, superPriorityId) {
     // const targetsContainer = document.getElementById("targetsContainer");
     const targetElement = document.createElement("div");
@@ -99,16 +126,17 @@ function addTargetToDOM(target, superPriorityId) {
     const daysLeft = target.endDate ? Math.ceil((new Date(target.endDate) - new Date()) / (1000 * 60 * 60 * 24)) : "—";
     // Вычисляем оставшуюся сумму
     const remainingAmount = Math.max(target.amount - target.progress, 0);
+    const formattedRemainingAmount = formatAmount(remainingAmount);
 
     const progressHTML = progressPercent === 100 
     ? `<img class="missionComplete" src="./assets/images/img/mission-complete.png" alt="Цель выполнена">` 
     : `<div class="progress-info__time">
             <span class="progress-info__label">Конец сбора через:</span>
-            <span class="progress-info__days">${daysLeft} дней</span>
+            <span class="progress-info__days progress-info__result">${daysLeft} дней</span>
         </div>
         <div class="progress-info__amount">
             <span class="progress-info__label">Осталось собрать:</span>
-            <span class="progress-info__remaining">${remainingAmount} ₽</span>
+            <span class="progress-info__remaining progress-info__result">${formattedRemainingAmount}</span>
         </div>`
     
 

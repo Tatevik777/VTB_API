@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Настройки</title>
-    <meta name="keywords" content="настройки" />
-    <meta name="description" content="Настройки." />
+    <title>Помощь</title>
+    <meta name="keywords" content="помощь" />
+    <meta name="description" content="Помощь." />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <section class="target">
-      <div class="settings__wrapper target__wrapper target__wrapper__right">
+      <div class="target__wrapper__help target__wrapper__right">
         <div class="navbar">
           <ul class="navbar__top">
             <li>
@@ -198,101 +198,75 @@
             </li>
           </ul>
         </div>
-        <section class="settings__main-wrapper">
-          <div class="settings__inputs-container">
-            <h1 class="settings__title">Настройки</h1>
-
-            <div class="settings__checkbox-container">
-              <label
-                class="settings__custom-checkbox__label"
-                for="superPriority"
-              >
-                <input
-                  class="settings__custom-checkbox__input"
-                  type="checkbox"
-                  name="superPriority"
-                  id="superPriority"
-                  value="superPriority"
-                  checked
+        <section class="help__main-wrapper">
+          <div class="help__cancel">
+            <img
+              class="help__cancel__img"
+              src="/assets/images/icons/help__cancel-icon.svg"
+              alt="Закрыть"
+              id="helpClose"
+            />
+          </div>
+          <div class="help__gallery">
+            <div class="help__gallery__card">
+              <div class="help__card__container">
+                <h2 class="help__card__title">Шаг 1</h2>
+                <img
+                  class="help__card__img"
+                  src="/assets/images/img/help_card_step1.png"
+                  alt="Шаг 1. Войдите на платформу"
                 />
-                <span class="settings__custom-checkbox__toggle"></span>
-                Суперприоритет</label
-              >
-              <span class="settings__notification-icon">?</span>
-              <p class="settings__tooltip">
-                Цель со статусом «Суперприоритет» будет отображаться первой в
-                списке и визуально выделяться.
-              </p>
-              <select class="settings__select" id="selectItem">
-                <option hidden value="">Выберите цель</option>
-              </select>
+                <p class="help__card__paragraph">
+                  Войдите на платформу Pay and Save
+                </p>
+              </div>
             </div>
-            <div class="settings__radiobuttons-container">
-              <fieldset class="settings__radiobutton-priority">
-                <legend>По приоритету:</legend>
-                <label for="high">
-                  <input
-                    type="radio"
-                    id="high"
-                    name="goalPriority"
-                    value="high"
-                    checked
-                  />
-                  <span></span>Высокий
-                </label>
-                <label for="average">
-                  <input
-                    type="radio"
-                    id="average"
-                    name="goalPriority"
-                    value="average"
-                  />
-                  <span></span>Средний
-                </label>
-                <label for="low">
-                  <input
-                    type="radio"
-                    id="low"
-                    name="goalPriority"
-                    value="low"
-                  />
-                  <span></span>Низкий
-                </label>
-              </fieldset>
 
-              <fieldset class="settings__radiobutton-time">
-                <legend>По приоритету времени:</legend>
-                <label for="shortTerm">
-                  <input
-                    type="radio"
-                    id="shortTerm"
-                    name="goalTime"
-                    value="shortTerm"
-                    checked
-                  />
-                  <span></span>Краткосрочные
-                </label>
-                <label for="longTerm">
-                  <input
-                    type="radio"
-                    id="longTerm"
-                    name="goalTime"
-                    value="longTerm"
-                  />
-                  <span></span>Долгосрочные
-                </label>
-              </fieldset>
+            <div class="help__gallery__card">
+              <div class="help__card__container">
+                <h2 class="help__card__title">Шаг 2</h2>
+                <img
+                  class="help__card__img"
+                  src="/assets/images/img/help_card_step2.png"
+                  alt="Шаг 2. Создайте цель"
+                />
+                <p class="help__card__paragraph">Создайте цель</p>
+              </div>
+            </div>
+
+            <div class="help__gallery__card">
+              <div class="help__card__container">
+                <h2 class="help__card__title">Шаг 3</h2>
+                <img
+                  class="help__card__img"
+                  src="/assets/images/img/help_card_step3.png"
+                  alt="Шаг 3. Настройте списание средств"
+                />
+                <p class="help__card__paragraph">Настройте списание средств</p>
+              </div>
+            </div>
+
+            <div class="help__gallery__card">
+              <div class="help__card__container">
+                <h2 class="help__card__title">Шаг 4</h2>
+                <img
+                  class="help__card__img"
+                  src="/assets/images/img/help_card_step4.png"
+                  alt="Шаг 4. Выполните цель"
+                />
+                <p class="help__card__paragraph">Выполните цель</p>
+              </div>
             </div>
           </div>
-          <div class="settings__button-container">
-            <button class="settings__saveButton" id="saveButtonSettings">
-              Сохранить
-            </button>
+          <div class="help__gallery__dots">
+            <span class="dot" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
           </div>
         </section>
       </div>
     </section>
-    <script src="/js/creatinggoal.js"></script>
-    <script src="/js/settings.js"></script>
+    <script src="./js/help.js"></script>
   </body>
 </html>

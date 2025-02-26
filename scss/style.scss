@@ -102,6 +102,14 @@ button {
   stroke: white;
 }
 
+.common-icon-wrapper.active .settings-icon path {
+  fill: white;
+}
+
+.common-icon-wrapper.active .help-icon circle {
+  fill: white;
+}
+
 // Стили для тултипа с носиком
 .tooltip {
   position: absolute;
@@ -648,6 +656,30 @@ button {
   }
 }
 
+.progress-info__time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.progress-info__amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.progress-info__label {
+  color: rgba(41, 41, 41, 1);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.progress-info__result {
+  font-weight: 700;
+  color: $accent-dark;
+  font-size: clamp(16px, 1.67vw, 32px);
+}
+
 .progress-text {
   margin-bottom: 15px;
   font-size: 20px;
@@ -803,6 +835,17 @@ button {
   color: $accent-light;
   margin-bottom: 20px;
 }
+
+.target-info__label {
+  color: $accent-dark;
+  font-weight: 500;
+}
+
+.target-info__result {
+  color: $accent-light;
+  font-weight: 700;
+}
+
 .target-info-title {
   font-size: clamp(16px, 1.04vw, 20px);
   font-weight: 700;
@@ -841,6 +884,358 @@ button {
 // .creatingGoal__inputs__inputItem:focus::placeholder {
 //   opacity: 0;
 // }
+
+//Страница "Настройки"
+.settings__wrapper {
+  margin: 92px 105px;
+}
+
+.settings__main-wrapper {
+  // .creatingGoal__main-wrapper,
+  // .help__main-wrapper
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: $bg-white;
+  width: 93%;
+  border-radius: 10px;
+  margin-left: 25px;
+  padding: 38px 80px;
+  justify-content: space-between;
+}
+
+.settings__inputs-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.settings__title {
+  display: inline;
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: 48px;
+  color: $accent-dark;
+  line-height: 1.1;
+  margin: 12px 0px 30px 0px;
+}
+
+.settings__button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.settings__saveButton {
+  font-family: $font-family;
+  font-weight: 500;
+  font-size: 24px;
+  color: $bg-white;
+  background-color: $accent-dark;
+  padding: 24px 171px;
+  border-radius: 10px;
+  border: none;
+  box-sizing: border-box;
+}
+
+.settings__saveButton:hover {
+  background-color: $bg-white;
+  color: $accent-dark;
+  font-weight: 700;
+  border: 4px solid $accent-dark;
+}
+
+.settings__checkbox-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.settings__custom-checkbox__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.settings__custom-checkbox__input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.settings__custom-checkbox__toggle {
+  position: relative;
+  display: inline-block;
+  margin: 0 15px 0 0;
+  width: 70px;
+  height: 37px;
+  background: $grey;
+  border-radius: 50px;
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.settings__custom-checkbox__toggle::after {
+  content: "";
+  position: absolute;
+  top: 4.5px;
+  left: 4.5px;
+  width: 28px;
+  height: 28px;
+  background: $bg-white;
+  border-radius: 50px;
+  transition: left 0.2s ease-in-out, width 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+}
+
+.settings__custom-checkbox__input:checked + .settings__custom-checkbox__toggle {
+  background: $accent-light;
+}
+
+.settings__custom-checkbox__input:checked
+  + .settings__custom-checkbox__toggle::after {
+  left: calc(100% - 4.5px);
+  transform: translateX(-100%);
+}
+
+.settings__notification-icon {
+  position: relative;
+  display: flex;
+  margin: 0 13px 0 15px;
+  width: 31px;
+  height: 31px;
+  background: $grey;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings__tooltip {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  font-family: $font-family;
+  background-color: $bg-white;
+  border: 2px solid $accent-dark;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px;
+  margin-bottom: 150px;
+  margin-left: 294px;
+  display: none;
+}
+
+.settings__notification-icon:hover + .settings__tooltip,
+.settings__notification-icon:focus + .settings__tooltip {
+  display: block;
+}
+
+.settings__select {
+  width: 470px;
+  background: $grey;
+  padding: 16.5px 20px;
+  box-sizing: border-box;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.settings__radiobuttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.settings__radiobutton-priority,
+.settings__radiobutton-time {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings__radiobutton-priority {
+  margin-right: 58px;
+}
+
+.settings__radiobutton-priority legend,
+.settings__radiobutton-time legend {
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+  padding-bottom: 30px;
+}
+
+.settings__radiobutton-priority label,
+.settings__radiobutton-time label {
+  font-size: 24px;
+  line-height: 1.3;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 15px;
+}
+
+.settings__radiobutton-priority input,
+.settings__radiobutton-time input {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.settings__radiobutton-priority span,
+.settings__radiobutton-time span {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  width: 37px;
+  height: 37px;
+  background: $grey;
+  border-radius: 50px;
+  cursor: pointer;
+  vertical-align: middle;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.settings__radiobutton-priority span::after,
+.settings__radiobutton-time span::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 23px;
+  height: 23px;
+  background: $bg-white;
+  border-radius: 50px;
+}
+
+.settings__radiobutton-priority label input:checked ~ span,
+.settings__radiobutton-time label input:checked ~ span {
+  background: $accent-light;
+}
+//Конец страницы "Настройки"
+
+//Страница "Помощь"
+.help__main-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: $bg-white;
+  width: 93%;
+  border-radius: 10px;
+  margin-left: 25px;
+  padding: 38px 80px;
+  justify-content: space-between;
+}
+
+.target__wrapper__help {
+  display: flex;
+  height: 100vh;
+  padding: 30px 20px;
+  gap: 20px;
+  margin: 92px 105px;
+}
+
+.help__cancel {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  width: 100%;
+  justify-content: center;
+}
+
+.help__cancel__img {
+  cursor: pointer;
+}
+
+.help__gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0px;
+  border: none;
+  width: 100%;
+}
+
+.help__gallery__card {
+  padding: 146px 48px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid $grey;
+  max-width: 330px;
+  margin-bottom: 20px;
+  height: 674px;
+}
+
+.help__card__container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  max-width: 234px;
+}
+
+.help__card__title {
+  color: $accent-dark;
+  font-family: $font-family;
+  font-weight: 900;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.help__card__img {
+  width: 234px;
+}
+
+.help__card__img {
+  object-fit: cover;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.help__card__paragraph {
+  color: $text;
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.help__gallery__dots {
+  display: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  margin: 0px 7px;
+  border-radius: 50%;
+  background-color: $grey;
+  cursor: pointer;
+  display: none;
+}
+
+.dot.active {
+  width: 16px;
+  height: 16px;
+  border: 4px solid $accent-light;
+}
+
+//Конец страницы "Помощь"
 
 // Медиазапросы: от большего к меньшему, базовый вариант 1400-1920px, далее в соответствии с сеткой bootstrap //
 @media screen and (max-width: 1440px) {
@@ -953,6 +1348,38 @@ button {
       align-items: center;
     }
   }
+
+  .user-photo-container {
+    position: relative;
+  }
+  .dropdown-menu {
+    padding: 30px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 182px;
+    z-index: 2;
+  }
+
+  .dropdown-menu__nav {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-menu__link {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dropdown-menu.visible {
+    display: block;
+  }
   .navbar-mobile__bottom-nav {
     display: flex;
     width: 100%;
@@ -976,6 +1403,8 @@ button {
   }
   .target__items-item {
     gap: 20px;
+    max-height: unset;
+    max-width: unset;
   }
   .target__items-item__body {
     display: flex;
@@ -1017,5 +1446,41 @@ button {
   .authorization__wrapper {
     height: 282px;
     inset-block-start: calc(50% - 141px);
+  }
+}
+
+//Для страницы "Помощь"
+@media screen and (max-width: 1840px) {
+  .dot {
+    display: inline-block;
+  }
+
+  .help__gallery__card {
+    flex: 1 1 48%;
+  }
+
+  .help__gallery__dots {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .help__gallery__card {
+    flex: 1 1 70%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .help__gallery__card {
+    flex: 1 1 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .help__gallery__card {
+    flex: 1 1 100%;
   }
 }

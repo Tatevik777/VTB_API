@@ -42,10 +42,29 @@
               </div>
             </li>
             <li>
-              <img
-                src="./assets/images/img/user-pic.jpg"
-                alt="Фото пользователя"
-              />
+              <div class="user-photo-container" id="userPhoto">
+                <img
+                  id="userImage"
+                  src="./assets/images/img/user-pic.jpg"
+                  alt="Фото пользователя"
+                />
+                <div class="dropdown-menu" id="dropdownMenu">
+                  <ul class="dropdown-menu__nav">
+                    <li>
+                      <a class="dropdown-menu__link" href="./help.html">
+                        <img src="./assets/images/icons/Help.svg" alt="" />
+                        <p>Помощь</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-menu__link" href="authorization.html">
+                        <img src="./assets/images/icons/Logout.svg" alt="" />
+                        <p>Выход</p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -288,7 +307,10 @@
           </ul>
           <ul class="navbar__bottom">
             <li>
-              <div class="icon-wrapper common-icon-wrapper" data-url="">
+              <div
+                class="icon-wrapper common-icon-wrapper"
+                data-url="help.html"
+              >
                 <svg
                   class="help-icon icon"
                   width="50"
