@@ -54,12 +54,22 @@ function renderTargets() {
  
  const greetingItemsContainer = document.getElementById("greeting__items");
 
-  targets.forEach((target) => {
-    // Проверяем, нет ли уже такой цели в контейнере
-    if (!document.querySelector(`[data-id="${target.id}"]`)) {
-      addTargetToDOM(target);
-    }
-  });
+ greetingItemsContainer.innerHTML = ''; 
+
+ if (sortedTargets.length === 0) {
+     const noTargetsMessage = document.createElement('p');
+     noTargetsMessage.classList.add('no-targets-message');
+     noTargetsMessage.textContent = 'Приоритетных целей пока нет';
+     greetingItemsContainer.appendChild(noTargetsMessage);
+ } else {
+     sortedTargets.forEach(target => {
+ // Проверяем, нет ли уже такой цели в контейнере
+         if (!document.querySelector(`[data-id="${target.id}"]`)) {
+ // Передаем функции добавления цели в ДОМ не только цель, но и id супер приоритетной цели, иначе не работает
+             addTargetToDOM(target, superPriorityId); 
+         }
+     });
+ } 
 }
 
 function addTargetToDOM(target) {
