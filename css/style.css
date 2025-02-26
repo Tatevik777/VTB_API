@@ -619,10 +619,6 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: none;
-  position: fixed;
 }
 
 .greeting_wrapper_body {
@@ -634,6 +630,9 @@ button {
   font-size: 20px;
   border-radius: 10px;
   padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 .greeting_container_body {
@@ -645,4 +644,24 @@ button {
 .charts_wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 60px);
+  padding-bottom: 20px;
+}
+
+.funds__chart {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 90%;
+  height: 50%;
+}
+
+.goals__chart {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-left: 20px;
+  width: 90%;
+  height: 50%;
 }

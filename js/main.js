@@ -101,38 +101,24 @@ greetingItemsContainer.appendChild(targetElement);
     })
 };
 
-function targetToChart(){
+function targetToChart(target){
   const ctx1 = document.getElementById('chart1').getContext('2d');
   const ctx2 = document.getElementById('chart2').getContext('2d');
+  
 
-  const data1 = {
-    type: 'line',
-    labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'],
-    datasets: [{
-        label: 'Всего средств',
-        data: [20, 50, 80, 40, 100, 120],
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        fill: true,
-        tension: 0.4
-    }]
-  };
-
-  const data2 = {
-      labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'],
-      datasets: [{
-          label: 'Всего целей',
-          data: [5, 15, 10, 25, 30, 50],
-          borderColor: 'rgba(255, 99, 132, 1)',
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          fill: true,
-          tension: 0.4
-      }]
-  };
-
-  const config1 = {
+  const fundsChart = new Chart(chart1, {
       type: 'line',
-      data: data1,
+      data: {
+          labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'], // можно добавить текущую дату
+          datasets: [{
+              label: 'Всего средств (тыс.)',
+              data: [30, 50, 70, 120, 90, 110], // тут можно добавить переменную с количеством пополненных денег, котоая увеличивается или уменьшается при удалении цели 
+              fill: true,
+              backgroundColor:'rgba(1, 112, 223, 0)',
+              borderColor:  'rgba(32, 181, 238, 0.67)',
+              borderWidth: 2,
+          }]
+      },
       options: {
           responsive: true,
           scales: {
@@ -141,11 +127,20 @@ function targetToChart(){
               }
           }
       }
-  };
+  });
 
-  const config2 = {
+  const goalsChart = new Chart(chart2, {
       type: 'line',
-      data: data2,
+      data: {
+          labels: ['05.11.22', '06.11.22', '07.11.22', '08.11.22', '09.11.22', '10.11.22'],
+          datasets: [{
+              label: 'Всего целей (шт.)',
+              data: [20, 30, 25, 50, 45, 30],// тут можно добавить переменную с количеством целей, которая увеличивается или уменьшается при добавлении или удалении целей
+              backgroundColor:'rgba(1, 112, 223, 0)',
+              borderColor:  'rgba(32, 181, 238, 0.67)',
+              borderWidth: 2,
+          }]
+      },
       options: {
           responsive: true,
           scales: {
@@ -154,10 +149,8 @@ function targetToChart(){
               }
           }
       }
-  };
-
-  const myChart1 = new Chart(ctx1, config1);
-  const myChart2 = new Chart(ctx2, config2);
+  });
+  
 
 };
 targetToChart();
